@@ -163,7 +163,15 @@ app.post("/deleteUser", async (req, res) => {
 
 
 // event maintenace page 
-
+app.get('/eventMaintain', async (req, res) => {
+    try {
+        const events = await knex('eventrequests').select('*'); // Fetch all events
+        res.render('eventMaintain', { events }); // Render EJS file and pass events
+    } catch (error) {
+        console.error('Error fetching events:', error.message);
+        res.status(500).send('Server Error');
+    }
+});
 // add event
 
 // edit event
@@ -173,6 +181,15 @@ app.post("/deleteUser", async (req, res) => {
 // change event status
 
 // volunteer maintence page
+app.get('/volunteerMaintain', async (req, res) => {
+    try {
+        const volunteers = await knex('volunteers').select('*'); // Query to fetch all volunteers
+        res.render('volunteerMaintain', { volunteers });
+    } catch (error) {
+        console.error("Error fetching volunteers: ", error.message);
+        res.status(500).send("Server Error");
+    }
+});
 
 // add volunteer
 app.get('/volunteerForm', (req, res) => {
@@ -258,19 +275,8 @@ app.post('/addVolunteer', (req, res) => {
     }
     res.redirect('/volunteerMaintain');
 });
-// Route to fetch and display all volunteers
-app.get('/volunteerMaintain', async (req, res) => {
-    try {
-        const volunteers = await knex('volunteers').select('*'); // Query to fetch all volunteers
-        res.render('volunteerMaintain', { volunteers });
-    } catch (error) {
-        console.error("Error fetching volunteers: ", error.message);
-        res.status(500).send("Server Error");
-    }
-});
-
 // delete volunteer
-app.post('/delete/:id', async (req, res) => {
+app.post('/deleteVolunteer/:id', async (req, res) => {
     const { id } = req.params;
     try {
         await knex('volunteers').where('id', id).del(); // Deletes the volunteer
