@@ -173,7 +173,15 @@ app.get('/eventMaintain', async (req, res) => {
     }
 });
 // add event
-
+app.get('/eventRequest', (req,res) => {
+    try{
+        const events = knex('eventrequests').select('*');
+        res.render('eventRequest', {events});
+    } catch (error) {
+        console.error('Error fetching events table', error.message);
+        res.status(500).send('Server Error');
+    }
+});
 // edit event
 
 // delete event
@@ -286,6 +294,147 @@ app.post('/deleteVolunteer/:id', async (req, res) => {
         res.status(500).send("Server Error");
     }
 });
+// Edit Event
+app.get('/editEvent/:id', async (req, res) => {
+    const { id } = req.params;
+    try {
+        const event = await knex('eventrequests').where('eventID', id).first();
+        if (event) {
+            res.render('editEvent', { event });
+        } else {
+            res.status(404).send('Event not found');
+        }
+    } catch (error) {
+        console.error('Error fetching event for editing:', error.message);
+        res.status(500).send('Server Error');
+    }
+});
+
+app.post('/editEvent/:id', async (req, res) => {
+    const { id } = req.params;
+    const {
+        EventYear,
+        eventMonth,
+        eventDay,
+        eventStreetAddress,
+        eventName,
+        numAttending,
+        eventType,
+        eventState,
+        eventCity,
+        eventZipCode,
+        StartTime,
+        estimatedDuration,
+        eventContactLastName,
+        eventContactPhone,
+        JenShareStory,
+        eventStatus,
+        under10Amount,
+        NumSewers,
+        LocationDescription,
+        NumHostSewingMachines,
+    } = req.body;
+    try {
+        await knex('eventrequests')
+            .where('eventID', id)
+            .update({
+                EventYear,
+                eventMonth,
+                eventDay,
+                eventStreetAddress,
+                eventName,
+                numAttending,
+                eventType,
+                eventState,
+                eventCity,
+                eventZipCode,
+                StartTime,
+                estimatedDuration,
+                eventContactLastName,
+                eventContactPhone,
+                JenShareStory,
+                eventStatus,
+                under10Amount,
+                NumSewers,
+                LocationDescription,
+                NumHostSewingMachines,
+            });
+        res.redirect('/eventMaintain');
+    } catch (error) {
+        console.error('Error updating event:', error.message);
+        res.status(500).send('Server Error');
+    }
+});
+
+// Add Event
+app.get('/addEvent', (req, res) => {
+    res.render('addEvent');
+});
+
+app.post('/addEvent', async (req, res) => {
+    const {
+        EventYear,
+        eventMonth,
+        eventDay,
+        eventStreetAddress,
+        eventName,
+        numAttending,
+        eventType,
+        eventState,
+        eventCity,
+        eventZipCode,
+        StartTime,
+        estimatedDuration,
+        eventContactLastName,
+        eventContactPhone,
+        JenShareStory,
+        eventStatus,
+        under10Amount,
+        NumSewers,
+        LocationDescription,
+        NumHostSewingMachines,
+    } = req.body;
+    try {
+        await knex('eventrequests').insert({
+            EventYear,
+            eventMonth,
+            eventDay,
+            eventStreetAddress,
+            eventName,
+            numAttending,
+            eventType,
+            eventState,
+            eventCity,
+            eventZipCode,
+            StartTime,
+            estimatedDuration,
+            eventContactLastName,
+            eventContactPhone,
+            JenShareStory,
+            eventStatus,
+            under10Amount,
+            NumSewers,
+            LocationDescription,
+            NumHostSewingMachines,
+        });
+        res.redirect('/eventMaintain');
+    } catch (error) {
+        console.error('Error adding event:', error.message);
+        res.status(500).send('Server Error');
+    }
+});
+
+// Completed Events
+app.get('/completedEvents', async (req, res) => {
+    try {
+        const events = await knex('completedEvents').select('*');
+        res.render('completedEvents', { events });
+    } catch (error) {
+        console.error('Error fetching completed events:', error.message);
+        res.status(500).send('Server Error');
+    }
+});
+
 
 
 
