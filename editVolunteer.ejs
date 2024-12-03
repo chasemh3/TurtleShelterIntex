@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Volunteer</title>
+    <style>
+        /* Reset and base styles */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+/* Navigation styles */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background-color: rgba(0, 0, 0, 0.7);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #00a99d;
+}
+
+/* Hero section styles */
+.hero {
+    height: 100vh;
+    background: url('background.jpg') no-repeat center center/cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    color: white;
+    padding: 20px;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 0;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 600px;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    font-style: italic;
+    margin-bottom: 20px;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.hero-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: white;
+    background-color: #00a99d;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.hero-btn:hover {
+    background-color: #007f73;
+}
+
+/* Section styles */
+section {
+    padding: 50px;
+    text-align: center;
+    font-size: 1.2rem;
+    line-height: 1.6;
+}
+label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+}
+form {
+            width: 50%;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #F9F9F9;
+            font-size: 12px;
+        }
+
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">Edit Volunteer</h1>
+    <form style="text-align: center;" action="/editVolunteer/<%= volunteer.volid %>" method="POST">
+        <label>First Name:</label>
+        <input type="text" name="first_name" value="<%= volunteer.volfirstname %>"><br>
+        
+        <label>Last Name:</label>
+        <input type="text" name="last_name" value="<%= volunteer.vollastname %>"><br>
+        
+        <label>Phone Number:</label>
+        <input type="text" name="phone_number" value="<%= volunteer.volphone %>"><br>
+        
+        <label>How Found:</label>
+        <input type="text" name="how_found" value="<%= volunteer.wherefound %>"><br>
+        
+        <label>Sewing Level:</label>
+        <input type="radio" id="beginner" name="sewinglevel" value="Beginner" required>
+        <label for="beginner">Beginner</label>
+        <input type="radio" id="intermediate" name="sewinglevel" value="Intermediate">
+        <label for="intermediate">Intermediate</label>
+        <input type="radio" id="experienced" name="sewinglevel" value="Experienced">
+        <label for="experienced">Experienced</label><br>
+        <label>Hours Per Month:</label>
+        <input type="number" name="hours_per_week" value="<%= volunteer.numhoursvolunteering %>"><br>
+        
+        <button type="submit">Update</button>
+    </form>
+</body>
+</html>
