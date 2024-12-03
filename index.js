@@ -173,7 +173,15 @@ app.get('/eventMaintain', async (req, res) => {
     }
 });
 // add event
-
+app.get('/eventRequest', (req,res) => {
+    try{
+        const events = knex('eventrequests').select('*');
+        res.render('eventRequest', {events});
+    } catch (error) {
+        console.error('Error fetching events table', error.message);
+        res.status(500).send('Server Error');
+    }
+});
 // edit event
 
 // delete event
