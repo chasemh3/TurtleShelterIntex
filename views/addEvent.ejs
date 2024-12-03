@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Event</title>
+</head>
+<body>
+    <h1>Add Event</h1>
+    <form action="/addEvent" method="POST">
+        <label for="eventName">Event Name:</label>
+        <input type="text" id="eventName" name="eventName" required>
+        <br>
+
+        <label for="eventDate">Event Date:</label>
+        <input type="date" id="eventDate" name="eventDate" required>
+        <br>
+
+        <label for="eventTime">Event Start Time:</label>
+        <input type="time" id="eventTime" name="eventTime" required>
+        <br>
+
+        <label for="eventLocation">Event Location:</label>
+        <input type="text" id="eventLocation" name="eventLocation" required>
+        <br>
+
+        <label for="numAttendees">Number of Attendees:</label>
+        <input type="number" id="numAttendees" name="numAttendees" min="1" required>
+        <br>
+
+        <label for="jenStory">Would you like a story from Jen?</label>
+        <select id="jenStory" name="jenStory" required>
+            <option value="">Select an option</option>
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+        </select>
+        <br>
+
+        <!-- Conditional inputs for Jen's story -->
+        <div id="jenStoryDetails" style="display: none;">
+            <label for="storyLength">Preferred Story Length:</label>
+            <select id="storyLength" name="storyLength">
+                <option value="">Select an option</option>
+                <option value="short">Short</option>
+                <option value="long">Long</option>
+            </select>
+            <br>
+        </div>
+
+        <label for="numUnder10">Number of Attendees Under 10 Years Old:</label>
+        <input type="number" id="numUnder10" name="numUnder10" min="0">
+        <br>
+
+        <label for="numSewers">Number of Sewers:</label>
+        <input type="number" id="numSewers" name="numSewers" min="0">
+        <br>
+
+        <label for="numMachines">Number of Sewing Machines Host Can Provide:</label>
+        <input type="number" id="numMachines" name="numMachines" min="0">
+        <br>
+
+        <label for="locationDescription">Location Description:</label>
+        <textarea id="locationDescription" name="locationDescription" rows="4" cols="50" placeholder="Describe the event location"></textarea>
+        <br>
+
+        <button type="submit">Submit</button>
+    </form>
+    <form action="/eventMaintain" method="GET">
+        <button type="submit">Back</button>
+    </form>
+
+    <script>
+        // Show/Hide story length input based on Jen's story response
+        const jenStory = document.getElementById('jenStory');
+        const jenStoryDetails = document.getElementById('jenStoryDetails');
+
+        jenStory.addEventListener('change', function () {
+            if (jenStory.value === 'yes') {
+                jenStoryDetails.style.display = 'block';
+            } else {
+                jenStoryDetails.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
