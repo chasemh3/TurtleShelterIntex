@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Maintenance</title>
+</head>
+<body>
+    <h1>User Maintenance</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Phone Number</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% users.forEach(user => { %>
+            <tr>
+                <td><%= user.adminfirstname %></td>
+                <td><%= user.adminlastname %></td>
+                <td><%= user.adminphone %></td>
+                <td>
+                    <form action="/editUser/<%= user.adminid %>" method="GET" style="display:inline;">
+                        <button type="submit">Edit</button>
+                    </form>
+                    <form action="/deleteUser" method="POST" style="display:inline;" onsubmit="return confirm('Are you sure you want to delete this user?');">
+                        <input type="hidden" name="adminid" value="<%= user.adminid %>">
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            <% }); %>
+        </tbody>
+    </table>
+    <br>
+    <form action="/addUser" method="GET">
+        <button type="submit">Add User</button>
+    </form>
+</body>
+</html>
