@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Completed Events</title>
+</head>
+<body>
+    <h1>Completed Events</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Completed Event Name</th>
+                <th>Number of Volunteers Attended</th>
+                <th>Duration</th>
+                <th>Number of Pockets Produced</th>
+                <th>Number of Collars Produced</th>
+                <th>Number of Vests Produced</th>
+                <th>Total Completed Products</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% completedEvents.forEach(event => { %>
+            <tr>
+                <td><%= event.completedEventName %></td>
+                <td><%= event.numAttended %></td>
+                <td><%= event.duration %></td>
+                <td><%= event.numPocketsProduced %></td>
+                <td><%= event.numCollarsProduced %></td>
+                <td><%= event.numVestsProduced %></td>
+                <td><%= event.totalCompletedProducts %></td>
+                <td><%= event.eventStatus %></td>
+            </tr>
+            <% }); %>
+        </tbody>
+    </table>
+    <br>
+    <form action="/completedEventMaintenance" method="GET">
+        <button type="submit">Back to Completed Event Maintenance</button>
+    </form>
+</body>
+</html>
