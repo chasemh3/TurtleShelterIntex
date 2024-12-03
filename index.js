@@ -12,10 +12,21 @@ app.set("view engine", "ejs");
 
 app.set("views", path.join(__dirname, "views"));
 
+app.use(express.static(path.join(__dirname, "public")));
+
 app.use(express.urlencoded({extended: true}));
 
 // connect to postgres
-
+const knex = require("knex") ({
+    client : "pg",
+    connection : {
+    host : "localhost",
+    user : "postgres",
+    password : "admin",
+    database : "TSP",
+    port : 5432
+    }
+});
 // external landing page
 app.get('/', (req, res) => {
     res.render('index', {
