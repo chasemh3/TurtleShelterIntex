@@ -37,7 +37,7 @@
         <br>
 
         <!-- Conditional inputs for Jen's story -->
-        <div id="jenStoryDetails" style="display: <% if (event.jenStory === 'yes') { %>block<% } else { %>none<% } %>;">
+        <div id="jenStoryDetails" style="display: <%= event.jenStory === 'yes' ? 'block' : 'none' %>;">
             <label for="storyLength">Preferred Story Length:</label>
             <select id="storyLength" name="storyLength">
                 <option value="" <% if (!event.storyLength) { %> selected <% } %>>Select an option</option>
