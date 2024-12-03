@@ -20,11 +20,11 @@ app.use(express.urlencoded({extended: true}));
 const knex = require("knex") ({
     client : "pg",
     connection : {
-    host : "localhost",
-    user : "postgres",
-    password : "admin",
-    database : "TSP",
-    port : 5432
+        host : "localhost",
+        user : "postgres",
+        password : "admin",
+        database : "TSP",
+        port : 5432
     }
 });
 // external landing page
@@ -95,7 +95,7 @@ app.get('/internalIndex', (req, res) => {
 // user maintenance page
 app.get("/userMaintain", async (req, res) => {
     try {
-        const users = await knex("admin").select("adminid", "adminfirstname", "adminlastname", "adminphone");
+        const users = await knex("admin").select("adminid", "adminfirstname", "adminlastname");
         res.render("userMaintain", { users });
     } catch (err) {
         res.status(500).send(err.message);

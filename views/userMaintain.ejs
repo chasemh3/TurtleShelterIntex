@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Maintenance</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
     <h1>User Maintenance</h1>
@@ -12,7 +13,6 @@
             <tr>
                 <th>First Name</th>
                 <th>Last Name</th>
-                <th>Phone Number</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -21,7 +21,6 @@
             <tr>
                 <td><%= user.adminfirstname %></td>
                 <td><%= user.adminlastname %></td>
-                <td><%= user.adminphone %></td>
                 <td>
                     <form action="/editUser/<%= user.adminid %>" method="GET" style="display:inline;">
                         <button type="submit">Edit</button>

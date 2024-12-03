@@ -1,0 +1,102 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #CAD2C5;
+    color: #2F3E46;
+    line-height: 1.6;
+}
+
+/* Header and Navigation */
+header {
+    background-color: #2F3E46;
+    padding: 1em 0;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+}
+
+header nav li {
+    margin: 0 15px;
+}
+
+header nav a {
+    text-decoration: none;
+    color: #CAD2C5;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+header nav a:hover {
+    color: #84A98C;
+}
+
+/* Form Styling */
+form {
+    background: #FFFFFF;
+    max-width: 600px;
+    margin: 2em auto;
+    padding: 2em;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+form label {
+    font-weight: bold;
+    color: #52796F;
+    display: block;
+    margin-bottom: 8px;
+}
+
+form input,
+form select,
+form textarea,
+form button {
+    width: calc(100% - 20px);
+    margin-bottom: 1em;
+    padding: 10px;
+    border: 1px solid #84A98C;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+form button {
+    background-color: #52796F;
+    color: #FFFFFF;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #354F52;
+}
+
+/* Conditional Story Input Section */
+#jenStoryDetails {
+    margin-top: 1em;
+}
+
+/* Headings */
+h1, h2 {
+    color: #354F52;
+    text-align: center;
+    margin-top: 1em;
+    font-size: 2rem;
+}
+
+/* Footer */
+footer {
+    background-color: #2F3E46;
+    color: #CAD2C5;
+    text-align: center;
+    padding: 1em 0;
+    margin-top: 2em;
+}
