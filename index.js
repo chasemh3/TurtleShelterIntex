@@ -36,7 +36,6 @@ const knex = require("knex") ({
 app.get("/userMaintain", async (req, res) => {
     try {
         const users = await knex("admin").select("adminid", "adminfirstname", "adminlastname", "adminphone");
-        console.log("Fetched users:", users);
         res.render("userMaintain", { users });
     } catch (err) {
         res.status(500).send(err.message);
@@ -49,12 +48,13 @@ app.get("/addUser", (req, res) => {
 });
 
 app.post("/addUser", async (req, res) => {
-    const { adminfirstname, adminlastname, adminphone } = req.body;
+    const { adminfirstname, adminlastname, username, password } = req.body;
     try {
         await knex("admin").insert({
             adminfirstname,
             adminlastname,
-            adminphone,
+            username,
+            password,
         });
         res.redirect("/userMaintain");
     } catch (err) {
@@ -76,14 +76,13 @@ app.get("/editUser/:id", async (req, res) => {
 });
 
 app.post("/editUser/:id", async (req, res) => {
-    const { adminfirstname, adminlastname, adminphone } = req.body;
+    const { adminfirstname, adminlastname } = req.body;
     try {
         await knex("admin")
             .where("adminid", req.params.id)
             .update({
                 adminfirstname,
                 adminlastname,
-                adminphone,
             });
         res.redirect("/userMaintain");
     } catch (err) {

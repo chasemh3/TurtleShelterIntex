@@ -7,15 +7,12 @@
 </head>
 <body>
     <h1>Edit User</h1>
-    <form action="/editUser/<%= user.adminID %>" method="POST">
+    <form action="/editUser/<%= user.adminid %>" method="POST">
         <label for="adminfirstname">First Name:</label>
         <input type="text" id="adminfirstname" name="adminfirstname" value="<%= user.adminfirstname %>" required>
         <br>
         <label for="adminlastname">Last Name:</label>
         <input type="text" id="adminlastname" name="adminlastname" value="<%= user.adminlastname %>" required>
-        <br>
-        <label for="adminphone">Phone Number:</label>
-        <input type="text" id="adminphone" name="adminphone" value="<%= user.adminphone %>" required>
         <br>
         <button type="submit">Submit</button>
     </form>
