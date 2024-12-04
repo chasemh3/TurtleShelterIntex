@@ -4,50 +4,63 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Volunteer Form</title>
-    <link rel="stylesheet" href="/css/formstyles.css">
-
+    <link rel="stylesheet" href="styles/styles.css">
 </head>
 <body>
-    <header>
+    <header class="header">
+        <div class="header-left">
+            <img src="images/turtle.jpg" alt="Logo" class="logo">
+        </div>
+
         <nav>
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/addVolunteer">Volunteer</a></li>
-                <li><a href="/eventRequest">Request Events</a></li>
-                <li><a href="/login">Login</a></li>
-            </ul>
+            <a href="home.html" class="header-button">Home</a>
+            <a href="about.html" class="header-button">About</a>
+            <a href="contact.html" class="header-button">Contact</a>
         </nav>
+        
+        
     </header>
-    <main><!-- Add email, location (city and state/ maybe county), -->
-        <h1 style="text-align: center;">Volunteer Form</h1>
-        <form action="/submitVolunteer" method="POST">
-            <label for="firstName">First Name</label>
-            <input type="text" id="firstName" name="firstName" required>
-
-            <label for="lastName">Last Name</label>
-            <input type="text" id="lastName" name="lastName" required>
-
-            <label for="phoneNumber">Phone Number</label>
-            <input type="text" id="phoneNumber" name="phoneNumber" required>
-
-            <label for="foundUs">How did you find out about us?</label>
-            <input type="text" id="foundUs" name="foundUs" required>
-
-            <div class="radio-group">
-                <label>Sewing Level</label>
-                <input type="radio" id="beginner" name="sewingLevel" value="Beginner" required>
-                <label for="beginner">Beginner</label>
-                <input type="radio" id="intermediate" name="sewingLevel" value="Intermediate">
-                <label for="intermediate">Intermediate</label>
-                <input type="radio" id="experienced" name="sewingLevel" value="Experienced">
-                <label for="experienced">Experienced</label>
-            </div>
-
-            <label for="hoursPerWeek">Number of hours you can volunteer per month</label>
-            <input type="number" id="hoursPerWeek" name="hoursPerWeek" min="1" max="168" required>
-
-            <button type="submit">Submit</button>
-        </form>
-    </main>
+    <div class="form-wrapper">
+        <div class="form-image">
+            <img src="images/volunteer.jpg" alt="Form Illustration">
+        </div>
+    <!-- Container for the form -->
+    <div class="form-wrapper">
+        <div class="form-container">
+            <h1 class="form-title">Volunteer Form</h1>
+            <form action="/submitVolunteer" method="POST">
+                <label for="firstName" class="form-label">First Name</label>
+                <input type="text" id="firstName" name="firstName" class="form-input" required>
+                <br>
+                <label for="lastName" class="form-label">Last Name</label>
+                <input type="text" id="lastName" name="lastName" class="form-input" required>
+                <br>
+                <label for="phoneNumber" class="form-label">Phone Number</label>
+                <input type="text" id="phoneNumber" name="phoneNumber" class="form-input" required>
+                <br>
+                <label for="volEmail" class="form-label">Email</label>
+                <input type="text" id="volEmail" name="volEmail" class="form-input" required>
+                <br>
+                <label for="foundUs" class="form-label">How did you find out about us?</label>
+                <input type="text" id="foundUs" name="foundUs" class="form-input" required>
+                <br>
+                <div class="radio-group">
+                    <label class="form-label">Sewing Level</label>
+                    <input type="radio" id="beginner" name="sewingLevel" value="Beginner" class="form-input" required>
+                    <label for="beginner" class="form-label">Beginner</label>
+                    <input type="radio" id="intermediate" name="sewingLevel" value="Intermediate" class="form-input">
+                    <label for="intermediate" class="form-label">Intermediate</label>
+                    <input type="radio" id="experienced" name="sewingLevel" value="Experienced" class="form-input">
+                    <label for="experienced" class="form-label">Experienced</label>
+                </div>
+                <br>
+                <label for="hoursPerWeek" class="form-label">Number of hours you can volunteer per month</label>
+                <input type="number" id="hoursPerWeek" name="hoursPerWeek" class="form-input" min="1" max="168" required>
+                <br>
+                <button type="submit" class="form-button">Submit</button>
+            </form>
+        </div>
+    </div>
 </body>
 </html>
+
