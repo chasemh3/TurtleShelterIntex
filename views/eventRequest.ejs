@@ -4,70 +4,96 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Event Request Form</title>
+    <link rel="stylesheet" href="styles/styles.css">
 </head>
 <body>
-    <h1>Event Request Form</h1>
-    <form action="/submit-event" method="post">
-        <label for="eventName">Event Name:</label>
-        <input type="text" id="eventName" name="eventName" required><br><br>
-
-        <label for="eventDate">Event Date:</label>
-        <input type="date" id="eventDate" name="eventDate" required><br><br>
-
-        <label for="eventTime">Event Start Time:</label>
-        <input type="time" id="eventTime" name="eventTime" required><br><br>
-
-        <label for="eventLocation">Event Location:</label>
-        <input type="text" id="eventLocation" name="eventLocation" required><br><br>
-
-        <label for="numAttendees">Number of Attendees:</label>
-        <input type="number" id="numAttendees" name="numAttendees" min="1" required><br><br>
-
-        <label for="numSewers">Number of Sewers:</label>
-        <input type="number" id="numSewers" name="numSewers" min="0"><br><br>
-
-        <label for="numUnder10">Number of Attendees Under 10 Years Old:</label>
-        <input type="number" id="numUnder10" name="numUnder10" min="0"><br><br>
-
-        <label for="jenStory">Would you like a story from Jen?</label>
-        <select id="jenStory" name="jenStory" required>
-            <option value="">Select an option</option>
-            <option value="yes">Yes</option>
-            <option value="no">No</option>
-        </select><br><br>
-
-        <!-- Conditional inputs for Jen's story -->
-        <div id="jenStoryDetails" style="display: none;">
-            <label for="storyLength">Preferred Story Length:</label>
-            <select id="storyLength" name="storyLength">
-                <option value="">Select an option</option>
-                <option value="short">Short</option>
-                <option value="long">Long</option>
-            </select><br><br>
+    <header class="header">
+        <div class="header-left">
+            <img src="images/turtle.jpg" alt="Logo" class="logo">
         </div>
 
-        <label for="numMachines">Number of Sewing Machines Host Can Provide:</label>
-        <input type="number" id="numMachines" name="numMachines" min="0"><br><br>
-
-        <label for="locationDescription">Location Description:</label>
-        <textarea id="locationDescription" name="locationDescription" rows="4" cols="50" placeholder="How many people, tables, and machines can your location accomdate?"></textarea><br><br>
-
-        <button type="submit">Submit</button>
-    </form>
-
-    <script>
-        // Show/Hide story length input based on Jen's story response
-        const jenStory = document.getElementById('jenStory');
-        const jenStoryDetails = document.getElementById('jenStoryDetails');
-
-        jenStory.addEventListener('change', function () {
-            if (jenStory.value === 'yes') {
-                jenStoryDetails.style.display = 'block';
-            } else {
-                jenStoryDetails.style.display = 'none';
-            }
-        });
-    </script>
+        <nav>
+            <a href="home.html" class="header-button">Home</a>
+            <a href="about.html" class="header-button">About</a>
+            <a href="contact.html" class="header-button">Contact</a>
+        </nav>
+        
+        
+    </header>
+    <div class="form-wrapper">
+        <div class="form-image">
+            <img src="images/sewingimage.jpeg" alt="Form Illustration">
+        </div>
+        <div class="form-container">
+            <h1 class="form-title">Event Request Form</h1>
+            <form id="event-request-form" action="/submit-event" method="post">
+                <label for="eventName" class="form-label">Event Name:</label>
+                <input type="text" id="eventName" name="eventName" class="form-input" required>
+                <br>
+                <label for="eventType">What type of event is this?</label>
+                <br>
+                <select id="jenStory" name="jenStory" required>
+                    <option value="">Select an option</option>
+                    <option value="sewing">Sewing</option>
+                    <option value="non-sewing">Non-sewing</option>
+                    <option value="both">Both</option>
+                </select>
+                <br><br>
+                <label for="eventDate" class="form-label">Event Date:</label>
+                <input type="date" id="eventDate" name="eventDate" class="form-input" required>
+                <br>
+                <label for="eventTime" class="form-label">Event Start Time:</label>
+                <input type="time" id="eventTime" name="eventTime" class="form-input" required>
+                <br>
+                <label for="eventState" class="form-label">Event State:</label>
+                <input type="text" id="eventState" name="eventState" class="form-input" required>
+                <br>
+                <label for="eventCity" class="form-label">Event City:</label>
+                <input type="text" id="eventCity" name="eventCity" class="form-input" required>
+                <br>
+                <label for="eventStreetAddress" class="form-label">Event Street Address:</label>
+                <input type="text" id="eventStreetAddress" name="eventStreetAddress" class="form-input" required>
+                <br>
+                <label for="eventZip" class="form-label">Event Zip:</label>
+                <input type="text" id="eventZip" name="eventZip" class="form-input" required>
+                <br>
+                <label for="numAttendees" class="form-label">Total Number of Attendees:</label>
+                <input type="number" id="numAttendees" name="numAttendees" class="form-input" min="1" required>
+                <br>
+                <label for="numSewers" class="form-label">Number of Sewers:</label>
+                <input type="number" id="numSewers" name="numSewers" class="form-input" min="0">
+                <br>
+                <label for="numUnder10" class="form-label">Number of Attendees Under 10 Years Old:</label>
+                <input type="number" id="numUnder10" name="numUnder10" class="form-input" min="0">
+                <br>
+                <label for="jenStory">Would you like a story from Jen?</label>
+                <select id="jenStory" name="jenStory" required>
+                    <option value="">Select an option</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select><br>
+        
+                <!-- Conditional inputs for Jen's story -->
+                <div id="jenStoryDetails" style="display: none;">
+                    <label for="storyLength">Preferred Story Length:</label>
+                    <select id="storyLength" name="storyLength">
+                        <option value="">Select an option</option>
+                        <option value="short">Short</option>
+                        <option value="long">Long</option>
+                    </select><br><br>
+                <br>
+                </div>
+                <br>
+                <label for="numMachines" class="form-label">Number of Sewing Machines Host Can Provide:</label>
+                <input type="number" id="numMachines" name="numMachines" class="form-input" min="0">
+                <br>
+                <label for="locationDescription" class="form-label">Location Description:</label>
+                <br>
+                <textarea id="locationDescription" name="locationDescription" class="form-textarea" rows="4" cols="50" placeholder="How many people, tables, and machines can your location accommodate?"></textarea>
+                <br><br>
+                <button type="submit" class="form-button">Submit</button>
+            </form>
+        </div>
+    </div>
 </body>
 </html>
-
