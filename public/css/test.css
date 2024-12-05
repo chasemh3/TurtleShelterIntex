@@ -1,0 +1,432 @@
+
+/* Reset margins and padding */
+html, body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+}
+
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 30px; /* Adjust the values for desired spacing */
+    background-color: #354F52;
+    opacity: 0.85;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-sizing: border-box; /* Ensure padding doesn't affect layout width */
+}
+
+.logo img {
+    height: 100px; /* Adjust the size of the logo as needed */
+    max-width: 100%;
+}
+
+.logo-container {
+    display: flex; /* Aligns items in a row */
+    align-items: center; /* Vertically centers the logo and company name */
+    gap: 10px; /* Adjust the spacing between the logo and the text */
+    height: 100px;
+}
+
+/* Company name styling */
+.company-name {
+    font-family: 'proxima-nova', sans-serif; /* Match the font style to the site theme */
+    font-size: 25px; /* Adjust the font size as needed */
+    text-align: left;
+    display: block;
+    color: white; /* Match the text color to the nav theme */
+}
+
+
+.logo {
+    height: 100px;
+    max-width: 100%;
+    margin-left: 0; /* Default margin for the logo */
+}
+
+nav ul {
+    font-family: 'proxima-nova', sans-serif;
+    font-size: 25px;
+    display: flex;
+    gap: 40px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li:last-child {
+    margin-right: 0; /* Extra margin for the last item if needed */
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #84A98C;
+}
+
+/* Dropdown styles */
+.dropdown-menu {
+    display: none;
+    position: absolute; /* Position the menu relative to its parent */
+    background-color: #354F52; /* Matches your color scheme */
+    top: calc(100% + 2px); /* Ensures it's just below the bottom edge of the navbar */
+    left: 0; /* Aligns the dropdown menu with the left edge of the parent */
+    padding: 5px 0; /* Reduces vertical padding */
+    border-radius: 5px; /* Optional rounded corners */
+    min-width: 220px; /* Ensures a consistent width */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional shadow for better visibility */
+    z-index: 1000; /* Keeps it above other elements */
+}
+
+.dropdown {
+    position: relative; /* Key to keep the dropdown aligned with the parent */
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+/* Individual dropdown items */
+.dropdown-menu li {
+    padding: 5px 0px;
+}
+
+.dropdown-menu a {
+    display: block; /* Makes each item take up the full width */
+    text-align: left; /* Ensures text is aligned to the left */
+    padding: 10px 15px; /* Adjusts space around the text */
+    color: white; /* Text color for menu items */
+    text-decoration: none; /* Removes underline */
+    transition: background-color 0.3s ease; /* Smooth hover effect */
+    text-transform: uppercase;
+}
+
+.dropdown-menu a:hover {
+    background-color: #52796F;
+    color: #CAD2C5;
+}
+
+.dropdown-menu.show {
+    display: block;
+}
+
+/* Hero section styles */
+.hero {
+    height: 100vh;
+    background: url('/images/cover.png') no-repeat center center/cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    color: white;
+    padding: 0px;
+    margin-top: 110px;
+    width: 100%;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #354F52;
+    opacity: 0.25;
+    z-index: 0;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 600px;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    font-style: italic;
+    margin-bottom: 20px;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.hero-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: white;
+    background-color: #00a99d;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.hero-btn:hover {
+    background-color: #007f73;
+}
+
+/* Section styles */
+section {
+    padding: 40px 20px;
+    text-align: center;
+    background-color: #FFFFFF; /* White background for sections */
+    border-radius: 10px;
+    margin: 20px auto;
+    max-width: 1500px;
+    font-family: "proxima nova", Sans-serif;
+    
+}
+
+section h2 {
+    color: #52796F;
+    font-size: 3rem;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    font-weight: normal;
+}
+
+section p {
+    font-size: 2rem;
+    line-height: 1.8;
+    color: #354F52;
+    font-family: "proxima nova", Sans-serif;;
+}
+
+/* Stats container */
+.stats-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+
+    /* Add padding around the container */
+    
+}
+
+/* Individual stat sections */
+.stat {
+    flex: 1;
+    text-align: center;
+    border-radius: 10px;
+    padding: 30px;
+    max-width: 400px;
+}
+
+.stat-content a {
+    color: #52796F;
+    font-family: "proxima nova", Sans-serif;
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: normal;
+    transition: color 0.3s ease;
+}
+
+.stat-content a:hover {
+    color: #84A98C; /* Link hover effect */
+}
+
+/* Stat text and icons */
+.stat-icon {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 10px;
+}
+
+.stat-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #2F3E46;
+}
+
+
+/* Optional: Make the text larger on smaller screens */
+@media (max-width: 768px) {
+    .stat-text {
+        font-size: 1rem;
+    }
+    
+}
+
+/* General paragraph styling */
+#turtle-project p {
+    line-height: 1.8;
+    color: #354F52; /* Primary text color */
+    font-family: "proxima nova", Sans-serif;
+    font-size: 2.5rem;
+}
+
+/* Inline link styling without underline */
+#turtle-project p .inline-link {
+    color: #84A98C; /* Link color to match your scheme */
+    text-decoration: none; /* Removes underline */
+    font-weight: normal; /* Keep the same font weight as the paragraph */
+    cursor: pointer; /* Pointer cursor to indicate it's a link */
+    transition: color 0.3s ease; /* Smooth hover effect */
+}
+
+/* Hover effect (optional for subtle interaction) */
+#turtle-project p .inline-link:hover {
+    color: #84A98C; /* Slightly lighter shade for hover effect */
+}
+
+/* Style specific to the "How can you help?" section */
+#projects {
+    background-color: #CAD2C5; /* Set the background color */
+    padding: 50px 35px; /* Add padding for spacing */
+    color: white; /* Ensure text is readable */
+    text-align: center;
+    max-width: 100%;
+}
+
+/* Adjust the text styles for better contrast */
+#projects h2 {
+    padding: 20px;
+    letter-spacing: 3px;
+    font-size: 3.4rem;
+    color: #52796F; /* Highlight the heading with a lighter color */
+}
+
+#projects .stat-text {
+    font-size: 2rem; /* Adjust text size */
+    font-weight: normal;
+    color: #354F52; /* Text color for stats */
+    text-transform: uppercase;
+}
+
+#projects .stat-button {
+    background-color: #FFFFFF; /* Button background */
+    color: #FFFFFF; /* Button text color */
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    margin: 0 auto;
+}
+
+#projects .stat-button:hover {
+    background-color: #84A98C; /* Hover effect for buttons */
+}
+
+/* Adjust icons to stand out */
+#projects .stat-icon {
+    width: 150px; /* Consistent icon size */
+    height: 150px; /* Cxnsistent icon size */
+    margin-bottom: 10px;
+    filter: brightness(1.2); /* Brighten icons slightly */
+}
+
+.stat-button {
+    background-color: #52796F; /* Button background color */
+    color: white; /* Text color */
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: flex; /* Makes the button a flex container */
+    flex-direction: column; /* Aligns content vertically */
+    justify-content: center; /* Center content vertically */
+    align-items: center; /* Center content horizontally */
+    width: 350px; /* Fixed width for all buttons */
+    height: 350px; /* Fixed height for all buttons */
+    text-align: center; /* Ensures text is centered */
+}
+
+#learn .stat{
+    background-color: #52796F;
+
+}
+
+#learn a{
+    color: #CAD2C5
+}
+#about p {
+    line-height: 1.8;
+    color: #354F52; /* Primary text color */
+    font-family: "proxima nova", Sans-serif;
+    font-size: 2.5rem;
+}
+
+#nums {
+    margin-bottom: 200px;  /* Adjust this value to increase the space */
+}
+
+/* Stats container styling */
+#nums .stats-container {
+    display: flex; /* Flexbox layout */
+    justify-content: center; /* Center items horizontally */
+    margin: 60px 0;
+}
+
+/* Individual stat styling */
+#nums .stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Align everything in the center of the container */
+    text-align: center; /* Center-align text */
+    margin: 0 120px;
+}
+
+/* Icon styling */
+#nums .stat-icon {
+    width: 200px; /* Large icon size */
+    height: 200px; 
+    margin-bottom: 20px; /* Space between icon and number */
+}
+
+/* Stat content (Number + Description) styling */
+#nums .stat-content {
+    display: flex;
+    flex-direction: row; /* Align number and icon next to each other */
+    align-items: center; /* Vertically align items in the center */
+    gap: 20px; /* Space between icon and number */
+    margin-bottom: 10px; /* Space between number and description */
+}
+
+/* Number (stat-text) styling */
+#nums .stat-text {
+    font-size: 7rem; /* Larger number */
+    font-weight: bold;
+    color: #52796F;
+}
+
+/* Description text styling */
+#nums .stat-description {
+    font-size: 3.25rem; /* Smaller text for description */
+    color: #52796F;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+    #nums .stats-container {
+        flex-direction: column; /* Stack stats vertically on smaller screens */
+        gap: 40px; /* Adjust gap for smaller screens */
+    }
+    #nums .stat-content {
+        flex-direction: column; /* Stack number and icon on top of each other */
+        gap: 10px; /* Adjust space for smaller screens */
+    }
+}
+
+

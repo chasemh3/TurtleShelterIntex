@@ -1,102 +1,146 @@
-/* General Styles */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #CAD2C5;
-    color: #2F3E46;
-    line-height: 1.6;
+    margin: 0; /* Removes default margin around the body */
+    font-family: 'Arial', sans-serif; /* Sets font style for the page */
+    background: linear-gradient(135deg, #CAD2C5, #354F52); /* Gradient colors for the background */
+    min-height: 100vh; /* Ensures the background covers the full height of the page */
+    color: #2F3E46; /* Text color */
+    display: flex; /* Enables flexbox layout */
+    flex-direction: column; /* Arranges items in a column */
+    align-items: center; /* Centers content horizontally */
 }
-
-/* Header and Navigation */
 header {
-    background-color: #2F3E46;
-    padding: 1em 0;
+    width: 100%; /* Ensure the header spans the full width */
+    padding: 0; /* Remove any padding that might restrict width */
+    margin: 0; /* Remove any margin */
+    box-sizing: border-box; /* Ensure padding/margin doesn't affect width */
 }
-
-header nav ul {
-    list-style: none;
+nav {
     display: flex;
-    justify-content: center;
-    padding: 0;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 30px; /* Adjust the values for desired spacing */
+    background-color: #354F52;
+    opacity: 0.85;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-sizing: border-box; /* Ensure padding doesn't affect layout width */
+}
+
+.logo img {
+    height: 100px; /* Adjust the size of the logo as needed */
+    max-width: 100%;
+}
+
+.logo-container {
+    display: flex; /* Aligns items in a row */
+    align-items: center; /* Vertically centers the logo and company name */
+    gap: 10px; /* Adjust the spacing between the logo and the text */
+    height: 100px;
+}
+
+/* Company name styling */
+.company-name {
+    font-family: 'proxima-nova', sans-serif; /* Match the font style to the site theme */
+    font-size: 25px; /* Adjust the font size as needed */
+    text-align: left;
+    display: block;
+    color: white; /* Match the text color to the nav theme */
+}
+
+
+.logo {
+    height: 100px;
+    max-width: 100%;
+    margin-left: 0; /* Default margin for the logo */
+}
+
+nav ul {
+    font-family: 'proxima-nova', sans-serif;
+    font-size: 18px;
+    display: flex;
+    gap: 20px;
+    list-style: none;
     margin: 0;
+    padding: 0;
 }
 
-header nav li {
-    margin: 0 15px;
+nav ul li:last-child {
+    margin-right: 0; /* Extra margin for the last item if needed */
 }
 
-header nav a {
+nav a {
     text-decoration: none;
-    color: #CAD2C5;
-    font-weight: bold;
-    transition: color 0.3s ease;
+    color: white;
+    transition: color 0.3s;
 }
 
-header nav a:hover {
+nav a:hover {
     color: #84A98C;
 }
 
-/* Form Styling */
-form {
-    background: #FFFFFF;
-    max-width: 600px;
-    margin: 2em auto;
-    padding: 2em;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+/* Form Image Section */
+.form-image {
+    flex: 1; /* Allocates space for the image */
+    background-size: cover; /* Scales the background image to cover the container */
+    overflow: hidden; /* Prevents content overflow */
 }
-
-form label {
-    font-weight: bold;
-    color: #52796F;
-    display: block;
-    margin-bottom: 8px;
+/* Styling for the Form Image */
+.form-image img {
+    width: 100%; /* Makes the image span the full width */
+    height: 100%; /* Makes the image span the full height */
+    object-fit: cover; /* Ensures the image scales proportionally */
 }
-
-form input,
-form select,
-form textarea,
-form button {
-    width: calc(100% - 20px);
-    margin-bottom: 1em;
-    padding: 10px;
-    border: 1px solid #84A98C;
-    border-radius: 5px;
-    font-size: 1rem;
+/* Form Title Styling */
+.form-title {
+    font-size: 28px; /* Title font size */
+    font: "proxima-nova";
+    margin-bottom: 20px; /* Adds space below the title */
+    font-weight: bold; /* Makes the title bold */
+    text-align: center; /* Centers the title */
 }
-
-form button {
-    background-color: #52796F;
-    color: #FFFFFF;
-    font-weight: bold;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+/* Form Button Styling */
+.form-button {
+    padding: 10px 20px; /* Adds padding inside the button */
+    border: none; /* Removes the border */
+    border-radius: 5px; /* Adds rounded corners */
+    background-color: #52796F; /* Button background color */
+    color: white; /* Button text color */
+    font-size: 16px; /* Font size for the button */
+    cursor: pointer; /* Changes cursor to a pointer on hover */
+    align-self: center; /* Centers the button in its container */
 }
-
-form button:hover {
-    background-color: #354F52;
+/* Hover Effect for Form Button */
+.form-button:hover {
+    background-color: #354F52; /* Darker color when hovering */
 }
-
-/* Conditional Story Input Section */
-#jenStoryDetails {
-    margin-top: 1em;
+/* Form Wrapper Section */
+.form-wrapper {
+    display: flex; /* Flexbox layout for form wrapper */
+    flex-wrap: wrap; /* Allows content to wrap within the form wrapper */
+    margin: 30px 15px; /* Adds space outside the form wrapper */
+    background: #FFFFFF; /* Form background color */
+    border-radius: 15px; /* Rounded corners for the form */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Subtle shadow for depth */
+    max-width: 1100px; /* Limits the width of the form */
+    overflow: hidden; /* Prevents content from spilling outside the form */
+    margin-top: 125px; /* Adds spacing to avoid overlap with the header */
 }
-
-/* Headings */
-h1, h2 {
-    color: #354F52;
-    text-align: center;
-    margin-top: 1em;
-    font-size: 2rem;
+/* Form Content Section */
+.form-container {
+    flex: 1; /* Allows the form container to grow based on content */
+    padding: 30px; /* Adds padding inside the form */
+    overflow-y: auto; /* Enables vertical scrolling for the form */
+    box-sizing: border-box; /* Includes padding in width/height calculations */
+    width: auto; /* Adjusts width based on content */
+    min-width: 300px; /* Ensures a minimum width */
+    max-width: 100%; /* Prevents exceeding the width of the viewport */
 }
-
-/* Footer */
-footer {
-    background-color: #2F3E46;
-    color: #CAD2C5;
-    text-align: center;
-    padding: 1em 0;
-    margin-top: 2em;
+/* Input and Label Styling */
+.form-input,
+.form-label {
+    display: block; /* Makes inputs and labels block elements */
+    width: 100%; /* Ensures they take full width */
+    box-sizing: border-box; /* Includes padding in width calculations */
 }

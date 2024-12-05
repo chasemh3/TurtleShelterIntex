@@ -4,7 +4,7 @@ let app = express();
 
 let path = require("path");
 
-const port = 5555; 
+const port = 5553; 
 
 let security = false;
 
@@ -32,7 +32,7 @@ app.get('/', (req, res) => {
     res.render('index', {
         pageTitle: 'Welcome to the Turtle Shelter Project',
         heroText: 'WHAT IS A TURTLE SHELTER VEST? A HIGH TECH BUT SIMPLE SOLUTION TO HELP SAVE LIVES\n- A PORTABLE "SHELTER" YOU CAN CARRY WITH YOU, JUST LIKE A TURTLE...AND YOU CAN HELP!',
-        aboutText: 'Every life has value, Every person can serve!',
+        aboutText: 'The Turtle Shelter Project creates life-saving foam vests for the homeless to provide warmth and protection during freezing temperatures. Using innovative foam clothing technology, our vests retain body heat even when wet, offering critical insulation for those exposed to the elements. Every life has value, and we believe no one should suffer in the cold simply because they lack shelter.',
         projects: [
             {
                 title: 'Take Action',
