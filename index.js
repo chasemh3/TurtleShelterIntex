@@ -4,9 +4,18 @@ let app = express();
 
 let path = require("path");
 
+const bcrypt = require('bcrypt');
+
+const session = require('express-session');
+
 const port = process.env.PORT || 5555; 
 
-let security = false;
+app.use(session({
+    secret: 'your-secret-key', // Choose a secret key to sign the session ID cookie
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false } // Use true for HTTPS, false for HTTP
+  }));
 
 app.set("view engine", "ejs");
 
@@ -49,31 +58,62 @@ app.get('/', (req, res) => {
 });
 
 // login
-app.get('/login', (req,res) => {
-    res.render('login')
+app.get('/login', (req, res) => {
+    res.render('login', { error: null }); // Always pass `error` as null if no error
+  });
+
+// Route for handling login form submission
+// Example of session logging in your login route
+app.post("/login", async (req, res) => {
+    const { username, password } = req.body;
+    try {
+        const user = await knex("admin")
+            .where("username", username)
+            .first();
+        
+        if (!user) {
+            console.log("User not found");
+            return res.render("login", { error: "Invalid username or password" });
+        }
+
+
+        // Ensure bcrypt compare works
+        const passwordMatch = await bcrypt.compare(password, user.password);
+        console.log("Password match:", passwordMatch);
+
+        if (passwordMatch) {
+            req.session.user = { id: user.adminid, username: user.username };
+            console.log("User logged in:", req.session.user);
+            res.redirect("/internalIndex");
+        } else {
+            res.render("login", { error: "Invalid username or password" });
+        }
+    } catch (err) {
+        console.error("Error during login:", err);
+        res.status(500).send("Server error");
+    }
 });
 
-app.post('/login', (req, res) => {
-    const username = req.body.username;
-    const password = req.body.password;
-    try {
-        // Query the user table to find the record
-        const user = knex('admin')
-            .select('*')
-            .where({ username, password }) // Replace with hashed password comparison in production
-            .first(); // Returns the first matching record
-        if (user) {
-            security = true;
-        } else {
-            security = false;
-        }
-    } catch (error) {
-        res.status(500).send('Database query failed: ' + error.message);
-    }
-    res.redirect("/internalIndex")
-});
+
+  
+// Logout route to block access to internal index
+app.get('/logout', (req, res) => {
+    // Destroy the session and log the user out
+    req.session.destroy((err) => {
+      if (err) {
+        console.error('Error destroying session:', err);
+        return res.redirect('/internalIndex');
+      }
+      // Redirect to home landing page after logging out
+      res.redirect('/');
+    });
+  });
+
 // internal landing page
 app.get('/internalIndex', (req, res) => {
+     // Check if the user is logged in
+  if (!req.session.user) {
+    return res.redirect('/login'); // Redirect to login if not authenticated
     res.render('internalIndex', {
         pageTitle: 'Welcome to the Turtle Shelter Project',
         heroText: 'WHAT IS A TURTLE SHELTER VEST? A HIGH TECH BUT SIMPLE SOLUTION TO HELP SAVE LIVES\n- A PORTABLE "SHELTER" YOU CAN CARRY WITH YOU, JUST LIKE A TURTLE...AND YOU CAN HELP!',
@@ -92,37 +132,64 @@ app.get('/internalIndex', (req, res) => {
         ]
     });
 });
-// user maintenance page
+// Route for userMaintain page (protected)
 app.get("/userMaintain", async (req, res) => {
+    // Check if the user is logged in
+    if (!req.session.user) {
+        return res.redirect("/login"); // Redirect to login if not authenticated
+    }
+
     try {
+        // Fetch users from the database
         const users = await knex("admin").select("adminid", "adminfirstname", "adminlastname");
         res.render("userMaintain", { users });
     } catch (err) {
-        res.status(500).send(err.message);
+        res.status(500).send(err.message); // Handle any database errors
     }
 });
 
-// add user
+
+// Add user (protected route)
 app.get("/addUser", (req, res) => {
+    // Check if the user is logged in
+    if (!req.session.user) {
+        return res.redirect("/login"); // Redirect to login if not authenticated
+    }
     res.render("addUser");
 });
 
 app.post("/addUser", async (req, res) => {
     const { adminfirstname, adminlastname, username, password } = req.body;
-    try {
-        await knex("admin").insert({
-            adminfirstname,
-            adminlastname,
-            username,
-            password,
-        });
-        res.redirect("/userMaintain");
-    } catch (err) {
-        res.status(500).send(err.message);
-    }
+    
+    // Hash the password
+    const saltRounds = 10;
+    bcrypt.hash(password, saltRounds, async (err, hashedPassword) => {
+        if (err) {
+            return res.status(500).send("Error hashing password");
+        }
+        
+        // Insert the new user with the hashed password
+        try {
+            await knex("admin").insert({
+                adminfirstname,
+                adminlastname,
+                username,
+                password: hashedPassword,  // Use hashed password
+            });
+            res.redirect("/userMaintain");
+        } catch (err) {
+            res.status(500).send(err.message);
+        }
+    });
 });
-// edit user
+
+// Edit user (protected route)
 app.get("/editUser/:id", async (req, res) => {
+    // Check if the user is logged in
+    if (!req.session.user) {
+        return res.redirect("/login"); // Redirect to login if not authenticated
+    }
+    
     try {
         const user = await knex("admin").where("adminid", req.params.id).first();
         if (user) {
@@ -150,9 +217,13 @@ app.post("/editUser/:id", async (req, res) => {
     }
 });
 
-
-// delete user
+// Delete user (protected route)
 app.post("/deleteUser", async (req, res) => {
+    // Check if the user is logged in
+    if (!req.session.user) {
+        return res.redirect("/login"); // Redirect to login if not authenticated
+    }
+
     try {
         await knex("admin").where("adminid", req.body.adminid).del();
         res.redirect("/userMaintain");
@@ -161,9 +232,13 @@ app.post("/deleteUser", async (req, res) => {
     }
 });
 
-
-// event maintenace page 
+// Event maintenance page (protected route)
 app.get('/eventMaintain', async (req, res) => {
+    // Check if the user is logged in
+    if (!req.session.user) {
+        return res.redirect("/login"); // Redirect to login if not authenticated
+    }
+
     try {
         const events = await knex('eventrequests').select('*'); // Fetch all events
         res.render('eventMaintain', { events }); // Render EJS file and pass events
@@ -190,6 +265,10 @@ app.get('/eventRequest', (req,res) => {
 
 // volunteer maintence page
 app.get('/volunteerMaintain', async (req, res) => {
+    if (!req.session.user) {
+        return res.redirect("/login"); // Redirect to login if not authenticated
+    }
+
     try {
         const volunteers = await knex('volunteers').select('*'); // Query to fetch all volunteers
         res.render('volunteerMaintain', { volunteers });
@@ -200,37 +279,12 @@ app.get('/volunteerMaintain', async (req, res) => {
 });
 
 // add volunteer
-app.get('/volunteerForm', (req, res) => {
-    res.render('volunteerForm', { pageTitle: 'Volunteer Form' });
-});
-
-app.post('/submitVolunteer', (req, res) => {
-    const { firstName, lastName, phoneNumber, foundUs, sewingLevel, hoursPerWeek } = req.body;
-
-    // Store or process the data
-    try {
-        // Example: Inserting data into a 'volunteers' table in the database
-        knex('volunteers').insert({
-            first_name: volfirstname,
-            last_name: vollastname,
-            phone_number: volphone,
-            found_us: wherefound,
-            sewing_level: sewinglevel,
-            hours_per_week: numhoursvolunteering
-        })
-        .then(() => {
-            res.send('Thank you for volunteering! Your submission has been received.');
-        })
-        .catch(err => {
-            res.status(500).send('Error saving data: ' + err.message);
-        });
-    } catch (error) {
-        res.status(500).send('Server error: ' + error.message);
-    }
-});
-// edit volunteer 
 app.get('/editVolunteer/:id', (req, res) => {
-    const { id } = req.params.id;
+    if (!req.session.user) {
+        return res.redirect("/login"); // Redirect to login if not authenticated
+    }
+
+    const { id } = req.params;
     try {
         const volunteer = knex('volunteers').where('id', id).first(); // Fetch the specific volunteer
         res.render('editVolunteer', { volunteer });
@@ -240,7 +294,11 @@ app.get('/editVolunteer/:id', (req, res) => {
     }
 });
 
-app.post('/editVolunteer/:id', (req, res) => {
+app.post('/editVolunteer/:id',  (req, res) => {
+    if (!req.session.user) {
+        return res.redirect("/login"); // Redirect to login if not authenticated
+    }
+
     const { id } = req.params;
     const { first_name, last_name, phone_number, how_found, sewing_level, hours_per_week } = req.body;
     try {
@@ -254,26 +312,29 @@ app.post('/editVolunteer/:id', (req, res) => {
     }
 });
 
-app.get('/addVolunteeer', (req,res) => {
-    res.render('addVolunteer')
+// add volunteer (Protected)
+app.get('/addVolunteer',  (req,res) => {
+    res.render('addVolunteer');
 });
 
 app.post('/addVolunteer', (req, res) => {
+    if (!req.session.user) {
+        return res.redirect("/login"); // Redirect to login if not authenticated
+    }
+
     const { firstName, lastName, phoneNumber, foundUs, sewingLevel, hoursPerWeek } = req.body;
 
-    // Store or process the data
     try {
-        // Example: Inserting data into a 'volunteers' table in the database
         knex('volunteers').insert({
-            first_name: volfirstname,
-            last_name: vollastname,
-            phone_number: volphone,
-            found_us: wherefound,
-            sewing_level: sewinglevel,
-            hours_per_week: numhoursvolunteering
+            first_name: firstName,
+            last_name: lastName,
+            phone_number: phoneNumber,
+            found_us: foundUs,
+            sewing_level: sewingLevel,
+            hours_per_week: hoursPerWeek
         })
         .then(() => {
-            res.send('Thank');
+            res.redirect('/volunteerMaintain');
         })
         .catch(err => {
             res.status(500).send('Error saving data: ' + err.message);
@@ -281,21 +342,30 @@ app.post('/addVolunteer', (req, res) => {
     } catch (error) {
         res.status(500).send('Server error: ' + error.message);
     }
-    res.redirect('/volunteerMaintain');
 });
-// delete volunteer
-app.post('/deleteVolunteer/:id', async (req, res) => {
+
+// delete volunteer (Protected)
+app.post('/deleteVolunteer/:id',  async (req, res) => {
+    if (!req.session.user) {
+        return res.redirect("/login"); // Redirect to login if not authenticated
+    }
+
     const { id } = req.params;
     try {
-        await knex('volunteers').where('id', id).del(); // Deletes the volunteer
-        res.redirect('/volunteerMaintain'); // Redirect back to the list
+        await knex('volunteers').where('id', id).del();
+        res.redirect('/volunteerMaintain');
     } catch (error) {
         console.error("Error deleting volunteer: ", error.message);
         res.status(500).send("Server Error");
     }
 });
-// Edit Event
-app.get('/editEvent/:id', async (req, res) => {
+
+// Edit Event (Protected)
+app.get('/editEvent/:id',  async (req, res) => {
+    if (!req.session.user) {
+        return res.redirect("/login"); // Redirect to login if not authenticated
+    }
+
     const { id } = req.params;
     try {
         const event = await knex('eventrequests').where('eventID', id).first();
@@ -311,6 +381,10 @@ app.get('/editEvent/:id', async (req, res) => {
 });
 
 app.post('/editEvent/:id', async (req, res) => {
+    if (!req.session.user) {
+        return res.redirect("/login"); // Redirect to login if not authenticated
+    }
+
     const { id } = req.params;
     const {
         EventYear,
@@ -366,12 +440,20 @@ app.post('/editEvent/:id', async (req, res) => {
     }
 });
 
-// Add Event
+// Add Event (Protected)
 app.get('/addEvent', (req, res) => {
+    if (!req.session.user) {
+        return res.redirect("/login"); // Redirect to login if not authenticated
+    }
+
     res.render('addEvent');
 });
 
-app.post('/addEvent', async (req, res) => {
+app.post('/addEvent',  async (req, res) => {
+    if (!req.session.user) {
+        return res.redirect("/login"); // Redirect to login if not authenticated
+    }
+
     const {
         EventYear,
         eventMonth,
@@ -424,8 +506,12 @@ app.post('/addEvent', async (req, res) => {
     }
 });
 
-// Completed Events
+// Completed Events (Protected)
 app.get('/completedEvents', async (req, res) => {
+    if (!req.session.user) {
+        return res.redirect("/login"); // Redirect to login if not authenticated
+    }
+
     try {
         const events = await knex('completedEvents').select('*');
         res.render('completedEvents', { events });
