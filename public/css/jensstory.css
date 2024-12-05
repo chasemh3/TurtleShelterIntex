@@ -1,0 +1,177 @@
+/* General Body Styling */
+body {
+    margin: 0;
+    font-family: 'times new roman', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Header Styling */
+header {
+    width: 100%;
+    background-color: #354F52;
+    padding: 10px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo {
+    width: 50px;
+    height: auto;
+}
+
+.company-name {
+    font-size: 24px;
+    color: white;
+}
+
+.nav-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.nav-button {
+    text-decoration: none;
+    color: white;
+    padding: 10px 15px;
+    background-color: #52796F;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.nav-button:hover {
+    background-color: #354F52;
+}
+
+/* Main Content Styling */
+main {
+    margin-top: 80px;
+    padding: 20px;
+}
+
+.story-section {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.story-section h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    text-align: center; /* Center the title */
+}
+
+.story-content {
+    overflow: hidden; /* Prevents layout issues with floated elements */
+}
+
+.story-image {
+    float: left; /* Allows the text to wrap */
+    width: 35%; /* Image size proportion */
+    max-width: 350px; /* Prevents overly large images */
+    height: auto;
+    margin: 0 20px 20px 0; /* Space around the image */
+    border-radius: 10px;
+}
+
+.story-text {
+    font-size: 18px;
+    line-height: 1.8;
+    margin-bottom: 15px; /* Adds spacing between paragraphs */
+}
+
+p {
+    text-indent: 35px; /* Indentation for paragraphs */
+}
+header {
+    width: 100%; /* Ensure the header spans the full width */
+    padding: 0; /* Remove any padding that might restrict width */
+    margin: 0; /* Remove any margin */
+    box-sizing: border-box; /* Ensure padding/margin doesn’t affect width */
+}
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 30px; /* Adjust the values for desired spacing */
+    background-color: #354F52;
+    opacity: 0.85;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-sizing: border-box; /* Ensure padding doesn’t affect layout width */
+}
+.logo img {
+    height: 100px; /* Adjust the size of the logo as needed */
+    max-width: 100%;
+}
+.logo-container {
+    display: flex; /* Aligns items in a row */
+    align-items: center; /* Vertically centers the logo and company name */
+    gap: 10px; /* Adjust the spacing between the logo and the text */
+    height: 100px;
+}
+/* Company name styling */
+.company-name {
+    font-family: ‘proxima-nova’, sans-serif; /* Match the font style to the site theme */
+    font-size: 25px; /* Adjust the font size as needed */
+    text-align: left;
+    display: block;
+    color: white; /* Match the text color to the nav theme */
+}
+.logo {
+    height: 100px;
+    max-width: 100%;
+    margin-left: 0; /* Default margin for the logo */
+}
+nav ul {
+    font-family: ‘proxima-nova’, sans-serif;
+    font-size: 18px;
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+nav ul li:last-child {
+    margin-right: 0; /* Extra margin for the last item if needed */
+}
+nav a {
+    text-decoration: none;
+    color: white;
+    transition: color 0.3s;
+}
+nav a:hover {
+    color: #84A98C;
+}
+/* Top Left Image Styling */
+.story-image {
+    float: left;
+    width: 35%;
+    max-width: 350px;
+    height: auto;
+    margin: 0 20px 20px 0;
+    border-radius: 10px;
+}
+
+/* Bottom Right Image Styling */
+.bottom-right-image {
+    float: right;
+    width: 30%;
+    max-width: 500px;
+    height: auto;
+    margin: 20px 0 0 20px;
+    border-radius: 10px;
+}

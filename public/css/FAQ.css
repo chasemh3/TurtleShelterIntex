@@ -1,0 +1,222 @@
+/* General Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    background: linear-gradient(135deg, #84A98C, #354F52); /* Gradient colors for the background */
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 30px; /* Adjust the values for desired spacing */
+    background-color: #354F52;
+    opacity: 0.85;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-sizing: border-box; /* Ensure padding doesn’t affect layout width */
+}
+.logo img {
+    height: 100px; /* Adjust the size of the logo as needed */
+    max-width: 100%;
+}
+.logo-container {
+    display: flex; /* Aligns items in a row */
+    align-items: center; /* Vertically centers the logo and company name */
+    gap: 10px; /* Adjust the spacing between the logo and the text */
+    height: 100px;
+}
+/* Company name styling */
+.company-name {
+    font-family: ‘proxima-nova’, sans-serif; /* Match the font style to the site theme */
+    font-size: 25px; /* Adjust the font size as needed */
+    text-align: left;
+    display: block;
+    color: white; /* Match the text color to the nav theme */
+}
+.logo {
+    height: 100px;
+    max-width: 100%;
+    margin-left: 0; /* Default margin for the logo */
+}
+nav ul {
+    font-family: ‘proxima-nova’, sans-serif;
+    font-size: 18px;
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+nav ul li:last-child {
+    margin-right: 0; /* Extra margin for the last item if needed */
+}
+nav a {
+    text-decoration: none;
+    color: white;
+    transition: color 0.3s;
+}
+nav a:hover {
+    color: #84A98C;
+}
+/* Hero section styles */
+.hero {
+    height: 100vh;
+    background: url(‘/images/cover.png’) no-repeat center center/cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    color: white;
+    padding: 0px;
+    margin-top: 110px;
+    width: 100%;
+}
+.hero::after {
+    content: “”;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #354F52;
+    opacity: 0.25;
+    z-index: 0;
+}
+.hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 600px;
+}
+.hero-content p {
+    font-size: 1.2rem;
+    font-style: italic;
+    margin-bottom: 20px;
+}
+.hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+.hero-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: white;
+    background-color: #00A99D;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+.hero-btn:hover {
+    background-color: #007F73;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    height: 50px;
+    margin-right: 10px;
+}
+
+.company-name {
+    font-size: 1.5rem;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+nav ul li a:hover {
+    background-color: #84A98C;
+}
+
+/* Main Section Styling */
+/* Main Section Styling */
+main {
+    max-width: 800px;
+    margin: 110px auto 20px auto; /* Add a larger top margin to move the entire container down */
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+
+.story-section {
+    text-align: center;
+    padding: 20px 0;
+}
+
+.story-section h1 {
+    color: black;
+    font-size: 2rem;
+    margin-bottom: 15px;
+    font: "proxima-nova";
+}
+
+.story-content {
+    text-align: left;
+}
+
+.story-text p {
+    margin-bottom: 15px;
+    padding: 10px;
+    border-left: 4px solid #84A98C;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+}
+
+.story-text p strong {
+    color: black;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.story-text p:nth-of-type(odd) {
+    border-color: #84A98C;
+}
+
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .story-section h1 {
+        font-size: 1.5rem;
+    }
+
+    .story-text p {
+        padding: 8px;
+    }
+}
