@@ -10,12 +10,15 @@ body {
     align-items: center;
     padding-top: 80px;
     background: linear-gradient(135deg, grey, #84A98C);
+    box-sizing: border-box; /* Ensures padding/margin don’t affect dimensions */
 }
+
+/* Ensure header stays in place */
 header {
-    width: 100%; /* Ensure the header spans the full width */
-    padding: 0; /* Remove any padding that might restrict width */
-    margin: 0; /* Remove any margin */
-    box-sizing: border-box; /* Ensure padding/margin doesn’t affect width */
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
 }
 nav {
     display: flex;
@@ -33,6 +36,15 @@ nav {
 .logo img {
     height: 100px; /* Adjust the size of the logo as needed */
     max-width: 100%;
+}
+/* Styling for table header */
+th {
+    background-color: #52796F;
+    color: white;
+    padding: 10px;
+    text-align: left;
+    border-bottom: 2px solid #ddd;
+    white-space: nowrap; /* Prevent header text from wrapping unnecessarily */
 }
 .logo-container {
     display: flex; /* Aligns items in a row */
@@ -53,6 +65,21 @@ nav {
     max-width: 100%;
     margin-left: 0; /* Default margin for the logo */
 }
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 30px;
+    background-color: #354F52;
+    opacity: 0.85;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-sizing: border-box;
+}
+
 nav ul {
     font-family: ‘proxima-nova’, sans-serif;
     font-size: 18px;
@@ -76,22 +103,24 @@ nav a:hover {
 
 /* Styling for the table container */
 .table-container {
-    display: inline-block; /* Shrinks or grows based on content */
-    background-color: #fff; /* White background for the table */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
-    border-radius: 10px; /* Rounded corners */
-    overflow: hidden; /* Prevents content from overflowing */
+    width: 100%; /* Ensure container takes up full width */
+    max-width: 100%; /* Prevent container from exceeding page boundaries */
+    background-color: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: auto; /* Adds scroll if content overflows */
     margin-bottom: 20px;
-    padding: 10px; /* Optional: Adds some spacing inside the container */
+    padding: 10px;
+    box-sizing: border-box; /* Prevents padding from increasing size */
 }
 
 /* Styling for the table */
 table {
-    display: table; /* Ensures the table behaves like a table */
-    width: auto; /* Allows the table to size itself based on content */
-    border-collapse: collapse; /* Ensures borders between cells are merged */
+    width: 100%; /* Table spans the container */
+    border-collapse: collapse;
+    table-layout: auto; /* Prevents fixed-width behavior */
+    word-wrap: break-word; /* Wraps content to fit */
 }
-
 /* Styling for table header */
 th {
     background-color: #52796F; /* Header background color */
@@ -104,8 +133,10 @@ th {
 /* Styling for table cells */
 td {
     padding: 10px;
-    border-bottom: 1px solid #ddd; /* Adds a dividing line between rows */
+    border-bottom: 1px solid #ddd;
     text-align: left;
+    word-wrap: break-word; /* Allow breaking of long words */
+    white-space: normal; /* Allow text to wrap */
 }
 
 /* Styling for table rows */
@@ -113,14 +144,20 @@ tr:hover {
     background-color: #f1f1f1; /* Changes background color on hover */
 }
 
-/* Styling for buttons within the table */
+/* Ensure buttons and table cells stay responsive */
 .edit-btn, .delete-btn {
     padding: 5px 10px;
     border-radius: 5px;
     border: none;
     cursor: pointer;
     font-size: 14px;
-    margin: 3 5px; /* Adds spacing between buttons */
+    margin: 3px 5px;
+}
+/* Adjust button font size on small screens */
+@media (max-width: 600px) {
+    .edit-btn, .delete-btn {
+        font-size: 12px;
+    }
 }
 
 /* Edit button styling */
@@ -176,4 +213,16 @@ td {
     padding: 10px; /* Adds padding inside cells */
     border-right: 1px solid #ddd; /* Adds a vertical line between columns */
     text-align: left; /* Aligns cell text to the left */
+}
+/* Adjust font size if the table needs to fit */
+@media (max-width: 600px) {
+    table, th, td {
+        font-size: 12px; /* Reduce font size on small screens */
+    }
+}
+
+@media (max-width: 400px) {
+    table, th, td {
+        font-size: 10px; /* Further reduce font size if space is constrained */
+    }
 }
