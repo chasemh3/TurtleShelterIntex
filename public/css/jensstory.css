@@ -1,16 +1,15 @@
 /* General Body Styling */
 body {
     margin: 0;
-    font-family: 'times new roman', sans-serif;
+    font-family: 'proxima nova', sans-serif;
     background-color: #f4f4f4;
-    color: #333;
+    color: #2F3E46;
 }
 
 /* Header Styling */
 header {
     width: 100%;
     background-color: #354F52;
-    padding: 10px 30px;
     display: flex;
     justify-content: space-between;
     align-items: center;
