@@ -131,6 +131,7 @@ app.get('/internalIndex', (req, res) => {
             }
         ]
     });
+    };
 });
 // Route for userMaintain page (protected)
 app.get("/userMaintain", async (req, res) => {
