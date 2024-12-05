@@ -76,18 +76,19 @@ nav a:hover {
 
 /* Styling for the table container */
 .table-container {
-    width: 100%;
-    max-width: 1000px;
+    display: inline-block; /* Shrinks or grows based on content */
     background-color: #fff; /* White background for the table */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
     border-radius: 10px; /* Rounded corners */
     overflow: hidden; /* Prevents content from overflowing */
     margin-bottom: 20px;
+    padding: 10px; /* Optional: Adds some spacing inside the container */
 }
 
 /* Styling for the table */
 table {
-    width: 100%;
+    display: table; /* Ensures the table behaves like a table */
+    width: auto; /* Allows the table to size itself based on content */
     border-collapse: collapse; /* Ensures borders between cells are merged */
 }
 
