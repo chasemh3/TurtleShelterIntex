@@ -308,6 +308,7 @@ section p {
     font-weight: normal;
     color: #354F52; /* Text color for stats */
     text-transform: uppercase;
+    font-weight: bold;
 }
 
 #projects .stat-button {
@@ -325,6 +326,7 @@ section p {
 
 #projects .stat-button:hover {
     background-color: #84A98C; /* Hover effect for buttons */
+    text-decoration: none;
 }
 
 /* Adjust icons to stand out */
