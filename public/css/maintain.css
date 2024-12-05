@@ -11,6 +11,11 @@ body {
     padding-top: 80px;
     background: linear-gradient(135deg, grey, #84A98C);
     box-sizing: border-box; /* Ensures padding/margin don’t affect dimensions */
+
+    min-height: 100vh; /* Set the body's minimum height to 100% of the viewport height */
+    background: linear-gradient(135deg, grey, #84A98C); /* Gradient background */
+    background-size: cover; /* Ensures the gradient covers the entire area */
+    background-repeat: no-repeat; /* Prevents the gradient from repeating */
 }
 
 /* Ensure header stays in place */
