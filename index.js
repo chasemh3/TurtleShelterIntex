@@ -264,6 +264,11 @@ app.get('/eventRequest', (req,res) => {
 
 // change event status
 
+// volunteer form
+app.get('/volunteerForm', (req, res) => {
+    res.render('volunteerForm', { pageTitle: 'Volunteer Form' });
+});
+
 // volunteer maintence page
 app.get('/volunteerMaintain', async (req, res) => {
     if (!req.session.user) {
@@ -534,6 +539,7 @@ app.get('/jensstory', (req, res) => {
 app.get('/FAQ', (req, res) => {
     res.render('FAQ', { pageTitle: 'FAQ' });
 });
+
 
 
 
