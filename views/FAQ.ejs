@@ -4,19 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FAQ - Turtle Shelter Project</title>
-    <link rel="stylesheet" href="styles/FAQ.css"> <!-- Link to your CSS file -->
+    <link rel="stylesheet" href="/css/FAQ.css"> <!-- Link to your CSS file -->
 </head>
 <body>
-    <header class=“hero”>
+    <header class="hero">
         <nav>
-            <div class=“logo-container”>
-                <img src="images/" alt="Logo" class="logo">
-                <span class=“company-name”>TURTLE SHELTER <br>PROJECT</span>
-            </div>
+            <div class="logo-container">
+                <img src="/images/logo.png" alt="Logo" class="logo">
+                <span class="company-name">TURTLE SHELTER <br>PROJECT</span>
+            </div> 
             <ul>
-                <li><a href=“/”>HOME</a></li>
-                <li><a href=“/volunteerForm”>VOLUNTEER</a></li>
-                <li><a href=“/eventRequest”>REQUEST EVENTS</a></li>
+                <li><a href="/">HOME</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">ABOUT</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/ourtech">Our Tech</a></li>
+                        <li><a href="/jensstory">Our Story</a></li>
+                        <li><a href="/FAQ">FAQ</a></li>
+                    </ul>
+                </li>
+                <li><a href="/volunteerForm">VOLUNTEER</a></li>
+                <li><a href="/eventRequest">EVENT REQUEST</a></li>
+                <li><a href="https://turtleshelterproject.org/donate">DONATE</a></li>
+                <li><a href="/login">LOGIN</a></li>
             </ul>
         </nav>
     </header>

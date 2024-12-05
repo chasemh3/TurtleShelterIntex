@@ -4,22 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jen's Story</title>
-    <link rel="stylesheet" href="public/css/jensstory.css">
+    <link rel="stylesheet" href="/css/jensstory.css">
 </head>
 <body>
     <!-- Header Section -->
-    <header>
+    <header class="hero">
         <nav>
-            <div class=“logo-container”>
-                <img src=“/images/logo.png” alt=“Logo” class=“logo”>
-                <span class=“company-name”>TURTLE SHELTER <br>PROJECT</span>
-            </div>
+            <div class="logo-container">
+                <img src="/images/logo.png" alt="Logo" class="logo">
+                <span class="company-name">TURTLE SHELTER <br>PROJECT</span>
+            </div> 
             <ul>
-                <li><a href=“/index.ejs”>HOME</a></li>
-                <li><a href=“/volunteerForm.ejs”>VOLUNTEER</a></li>
-                <li><a href=“/eventRequest”>EVENT REQUEST</a></li>
-                <li><a href=“https://turtleshelterproject.org/donate”>DONATE</a></li>
-                <li><a href=“l/ogin.ejs”>LOGIN</a></li>
+                <li><a href="/">HOME</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">ABOUT</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/ourtech">Our Tech</a></li>
+                        <li><a href="/jensstory">Our Story</a></li>
+                        <li><a href="/FAQ">FAQ</a></li>
+                    </ul>
+                </li>
+                <li><a href="/volunteerForm">VOLUNTEER</a></li>
+                <li><a href="/eventRequest">EVENT REQUEST</a></li>
+                <li><a href="https://turtleshelterproject.org/donate">DONATE</a></li>
+                <li><a href="/login">LOGIN</a></li>
             </ul>
         </nav>
     </header>

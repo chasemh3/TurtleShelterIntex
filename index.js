@@ -435,6 +435,19 @@ app.get('/completedEvents', async (req, res) => {
     }
 });
 
+// our tech page
+app.get('/ourtech', (req, res) => {
+    res.render('ourtech', { pageTitle: 'Our Tech' });
+});
+// jens story page
+app.get('/jensstory', (req, res) => {
+    res.render('jensstory', { pageTitle: 'Our Story' });
+});
+// FAQ page
+app.get('/FAQ', (req, res) => {
+    res.render('FAQ', { pageTitle: 'FAQ' });
+});
+
 
 
 
