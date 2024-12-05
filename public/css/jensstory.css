@@ -151,12 +151,13 @@ main {
 
 .story-content {
     overflow: hidden; /* Prevents layout issues with floated elements */
+    margin: 20px;
 }
 
 .story-image {
     float: left; /* Allows the text to wrap */
-    width: 35%; /* Image size proportion */
-    max-width: 350px; /* Prevents overly large images */
+    width: 45%; /* Image size proportion */
+    max-width: 550px; /* Prevents overly large images */
     height: auto;
     margin: 0 20px 20px 0; /* Space around the image */
     border-radius: 10px;
@@ -178,11 +179,17 @@ header {
     box-sizing: border-box; /* Ensure padding/margin doesn’t affect width */
 }
 
+.story-section h1 {
+    font-size: 60px;
+    font-family: 'proxima nova', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
 /* Top Left Image Styling */
 .story-image {
     float: left;
     width: 35%;
-    max-width: 350px;
+    max-width: 450px;
     height: auto;
     margin: 0 20px 20px 0;
     border-radius: 10px;
@@ -191,8 +198,8 @@ header {
 /* Bottom Right Image Styling */
 .bottom-right-image {
     float: right;
-    width: 30%;
-    max-width: 500px;
+    width: 35%;
+    max-width: 700px;
     height: auto;
     margin: 20px 0 0 20px;
     border-radius: 10px;
