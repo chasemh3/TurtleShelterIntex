@@ -163,7 +163,7 @@ main {
 }
 
 .story-text {
-    font-size: 18px;
+    font-size: 25px;
     line-height: 1.8;
     margin-bottom: 15px; /* Adds spacing between paragraphs */
 }
@@ -177,62 +177,7 @@ header {
     margin: 0; /* Remove any margin */
     box-sizing: border-box; /* Ensure padding/margin doesn’t affect width */
 }
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 5px 30px; /* Adjust the values for desired spacing */
-    background-color: #354F52;
-    opacity: 0.85;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
-    box-sizing: border-box; /* Ensure padding doesn’t affect layout width */
-}
-.logo img {
-    height: 100px; /* Adjust the size of the logo as needed */
-    max-width: 100%;
-}
-.logo-container {
-    display: flex; /* Aligns items in a row */
-    align-items: center; /* Vertically centers the logo and company name */
-    gap: 10px; /* Adjust the spacing between the logo and the text */
-    height: 100px;
-}
-/* Company name styling */
-.company-name {
-    font-family: ‘proxima-nova’, sans-serif; /* Match the font style to the site theme */
-    font-size: 25px; /* Adjust the font size as needed */
-    text-align: left;
-    display: block;
-    color: white; /* Match the text color to the nav theme */
-}
-.logo {
-    height: 100px;
-    max-width: 100%;
-    margin-left: 0; /* Default margin for the logo */
-}
-nav ul {
-    font-family: ‘proxima-nova’, sans-serif;
-    font-size: 18px;
-    display: flex;
-    gap: 20px;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-nav ul li:last-child {
-    margin-right: 0; /* Extra margin for the last item if needed */
-}
-nav a {
-    text-decoration: none;
-    color: white;
-    transition: color 0.3s;
-}
-nav a:hover {
-    color: #84A98C;
-}
+
 /* Top Left Image Styling */
 .story-image {
     float: left;
