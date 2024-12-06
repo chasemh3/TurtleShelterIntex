@@ -62,7 +62,7 @@ h1 {
 
 /* Error Message */
 p {
-    background-color: #52796F; /* Subtle darker green for error container */
+    background-color: #c93232; /* Subtle darker green for error container */
     color: white;
     padding: 0.5rem;
     border-radius: 5px;
@@ -86,7 +86,7 @@ input[type="password"] {
     margin-bottom: 1rem;
     border: 2px solid #354F52; /* Dark border */
     border-radius: 5px;
-    font-size: 0.9rem;
+    font-size: 1.5rem;
     outline: none;
     transition: all 0.3s ease-in-out;
 }
