@@ -21,10 +21,10 @@
             </tr>
         </thead>
         <tbody>
-            <% users.forEach(user => { %>
-            <tr>
-                <td><%= user.adminfirstname %></td>
-                <td><%= user.adminlastname %></td>
+            <% user.forEach(admin => { %>
+                    <tr>
+                        <td><%= admin.adminfirstname %></td>
+                        <td><%= admin.adminlastname %></td>
                 <td>
                     <form action="/editUser/<%= user.adminid %>" method="GET" style="display:inline;">
                         <button class="edit-btn" type="submit">Edit</button>

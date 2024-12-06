@@ -145,7 +145,7 @@ app.get("/userMaintain", async (req, res) => {
     try {
         // Fetch users from the database
         const user = await knex("admin").select("adminid", "adminfirstname", "adminlastname");
-        res.render("userMaintain", { users });
+        res.render("userMaintain", { user });
     } catch (err) {
         res.status(500).send(err.message); // Handle any database errors
     }
@@ -523,7 +523,7 @@ app.post('/addEvent',  async (req, res) => {
 });
 
 // Completed Events (Protected)
-app.get("/completedEvents", async (req, res) => {
+app.get("/CompletedEvents", async (req, res) => {
     if (!req.session.user) {
         return res.redirect("/login"); // Redirect to login if not authenticated
     }
