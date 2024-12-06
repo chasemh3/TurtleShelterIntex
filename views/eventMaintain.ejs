@@ -21,9 +21,7 @@
                     <th>Contact Last Name</th>
                     <th>Event Status</th>
                     <th>Event Type</th>
-                    <th>Event Year</th>
-                    <th>Event Month</th>
-                    <th>Event Day</th>
+                    <th>Event Date</th>
                     <th>Start Time</th>
                     <th>Estimated Duration</th>
                     <th>Contact Phone</th>
@@ -57,9 +55,7 @@
                     <td><%= event.eventcontactlastname %></td>
                     <td><%= event.eventstatus %></td>
                     <td><%= event.eventtype %></td>
-                    <td><%= event.eventyear %></td>
-                    <td><%= event.eventmonth %></td>
-                    <td><%= event.eventday %></td>
+                    <td><%= `${event.eventyear}/${event.eventmonth}/${event.eventday}` %></td>
                     <td><%= event.starttime %></td>
                     <td><%= event.estimatedduration %></td>
                     <td><%= event.eventcontactphone %></td>
@@ -69,7 +65,7 @@
                     <td><%= event.eventstate %></td>
                     <td><%= event.eventzipcode %></td>
                     <td><%= event.numattending %></td>
-                    <td><%= event.jensharestory %></td>
+                    <td><%= event.jensharestory ? "Yes" : "No" %></td>
                     <td><%= event.storylength %></td>
                     <td><%= event.under10amount %></td>
                     <td><%= event.numsewers %></td>
