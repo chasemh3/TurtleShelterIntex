@@ -44,7 +44,7 @@
                 <br>
                 <label for="eventType">What type of event is this?</label>
                 <br>
-                <select id="jenStory" name="jenStory" required>
+                <select id="eventType" name="eventType" required>
                     <option value="">Select an option</option>
                     <option value="sewing">Sewing</option>
                     <option value="non-sewing">Non-sewing</option>
@@ -78,8 +78,8 @@
                 <label for="numUnder10" class="form-label">Number of Attendees Under 10 Years Old:</label>
                 <input type="number" id="numUnder10" name="numUnder10" class="form-input" min="0">
                 <br>
-                <label for="jenStory">Would you like a story from Jen?</label>
-                <select id="jenStory" name="jenStory" required>
+                <label for="jenStoryDropdown">Would you like a story from Jen?</label>
+                <select id="jenStoryDropdown" name="jenStoryDropdown" required>
                     <option value="">Select an option</option>
                     <option value="yes">Yes</option>
                     <option value="no">No</option>
@@ -93,7 +93,6 @@
                         <option value="short">Short</option>
                         <option value="long">Long</option>
                     </select><br><br>
-                <br>
                 </div>
                 <br>
                 <label for="numMachines" class="form-label">Number of Sewing Machines Host Can Provide:</label>
@@ -107,5 +106,20 @@
             </form>
         </div>
     </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const jenStoryDropdown = document.getElementById("jenStoryDropdown");
+            const jenStoryDetails = document.getElementById("jenStoryDetails");
+
+            jenStoryDropdown.addEventListener("change", function () {
+                if (jenStoryDropdown.value === "yes") {
+                    jenStoryDetails.style.display = "block";
+                } else {
+                    jenStoryDetails.style.display = "none";
+                }
+            });
+        });
+    </script>
 </body>
 </html>
