@@ -8,12 +8,13 @@
     <link rel="stylesheet" href="/css/header.css">
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
     <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+</head>
 <body>
     <header class=“hero”>
         <nav>
             <div class=“logo-container”>
                 <img src="images/logo.png" alt="Logo" class="logo">
-                <span class=“company-name”><br>TURTLE SHELTER <br>PROJECT</span>
+                <span class=“company-name”>TURTLE SHELTER <br>PROJECT</span>
             </div>
              <ul>
                 <li><a href="/internalIndex">HOME</a></li>
@@ -24,7 +25,6 @@
                     <ul class="dropdown-menu">
                         <li><a href="/eventMaintain">Manage Events</a></li>
                         <li><a href="/completedEvents">Completed Events</a></li>
-                        <li><a href="/FAQ">FAQ</a></li>
                     </ul>
                 </li>
                 <li><a href="/logout">LOGOUT</a></li>
@@ -38,8 +38,6 @@
         </form>
     </div>
 <div class="table-container">
-
-    <h1>Volunteers List</h1>
     <table>
         <thead>
             <tr>
@@ -74,9 +72,6 @@
                 </td>
             </tr>
             <% }) %>
-            <a href="/addVolunteer">
-                <button class="add-btn">Add</button>
-            </a>
         </tbody>
     </table>
 </body>
