@@ -297,12 +297,13 @@ app.get('/volunteerMaintain', async (req, res) => {
 app.get('/editVolunteer/:id', (req, res) => {
     if (!req.session.user) {
         return res.redirect("/login"); // Redirect to login if not authenticated
+        
     }
 
     const { id } = req.params;
     try {
         const volunteer = knex('volunteers').where('id', id).first(); // Fetch the specific volunteer
-        res.render('editVolunteer', { volunteer });
+        res.render('editVolunteer', { volunteer }, );
     } catch (error) {
         console.error("Error fetching volunteer for editing: ", error.message);
         res.status(500).send("Server Error");
