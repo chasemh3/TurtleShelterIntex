@@ -86,7 +86,7 @@ app.post("/login", async (req, res) => {
         if (passwordMatch) {
             req.session.user = { id: user.adminid, username: user.username };
             console.log("User logged in:", req.session.user);
-            res.redirect("/internalIndex");
+            res.render("internalIndex");
         } else {
             res.render("login", { error: "Invalid username or password" });
         }
@@ -521,14 +521,14 @@ app.post('/addEvent',  async (req, res) => {
 });
 
 // Completed Events (Protected)
-app.get('/completedEvents', async (req, res) => {
+app.get('/CompletedEvents', async (req, res) => {
     if (!req.session.user) {
-        return res.redirect("/login"); // Redirect to login if not authenticated
+        return res.redirect("login"); // Redirect to login if not authenticated
     }
 
     try {
         const events = await knex('completedevents').select('*');
-        res.render('completedEvents', { events });
+        res.render('CompletedEvents', { completedEvents });
     } catch (error) {
         console.error('Error fetching completed events:', error.message);
         res.status(500).send('Server Error');

@@ -32,6 +32,7 @@
             </tr>
         </thead>
         <tbody>
+            <% volunteers.forEach(volunteer => { %>
             <!-- Sample row with data -->
             <tr>
                 <td><%= volunteer.volid %></td>
@@ -60,6 +61,7 @@
                     <button class="delete-btn">Delete</button>
                 </td>
             </tr>
+            <% }) %>
         </tbody>
     </table>
     <div class="table-footer">
