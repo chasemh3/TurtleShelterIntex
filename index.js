@@ -144,12 +144,13 @@ app.get("/userMaintain", async (req, res) => {
 
     try {
         // Fetch users from the database
-        const users = await knex("admin").select("adminid", "adminfirstname", "adminlastname");
-        res.render("userMaintain", { users });
+        const user = await knex("admin").select("adminid", "adminfirstname", "adminlastname");
+        res.render("userMaintain", { user });
     } catch (err) {
         res.status(500).send(err.message); // Handle any database errors
     }
 });
+
 
 
 // Add user (protected route)
