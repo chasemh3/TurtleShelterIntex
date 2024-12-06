@@ -29,13 +29,15 @@ app.use(express.urlencoded({extended: true}));
 const knex = require("knex") ({
     client : "pg",
     connection : {
-        host : "localhost",
-        user : "postgres",
-        password : "admin",
-        database : "TSP",
-        port : 5432
+        host : "awseb-e-sin87ts9np-stack-awsebrdsdatabase-ao0fncsub8c4.cnw8e0oim3dp.us-east-2.rds.amazonaws.com",
+        user : "ebroot",
+        password : "sipfu4-jonmuk-rygwYg",
+        database : "ebdb",
+        port : 5432,
+        ssl: { rejectUnauthorized: false // Set to true for stronger security, false allows unverified SSL certificates
+        }
     }
-});
+  });
 // external landing page
 app.get('/', (req, res) => {
     res.render('index', {
