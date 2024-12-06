@@ -386,7 +386,7 @@ app.post('/deleteVolunteer/:id',  async (req, res) => {
 
     const { id } = req.params;
     try {
-        await knex('volunteers').where('id', id).del();
+        await knex('volunteers').where('volid', id).del();
         res.redirect('/volunteerMaintain');
     } catch (error) {
         console.error("Error deleting volunteer: ", error.message);
