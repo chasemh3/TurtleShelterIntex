@@ -1,0 +1,112 @@
+/* General Reset */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #CAD2C5, #52796F); /* Lightest background */
+    color: #2F3E46; /* Darkest text color */
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    align-items: center; /* Center elements horizontally */
+    justify-content: flex-start; /* Start elements vertically */
+    min-height: 100vh; /* Ensure it fits the screen height */
+    padding: 20px; /* Add padding for breathing space */
+}
+
+/* Centered Container */
+.container {
+    display: flex;
+    flex-direction: column; /* Stack elements in the container */
+    align-items: center; /* Center elements horizontally */
+    text-align: center; /* Align text in the center */
+}
+
+/* Form Container */
+form {
+    background-color: #2F3E46; /* Main green */
+    padding: 2rem 3rem; /* Balanced padding */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 700px; /* Ensure form is not too wide */
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; /* Space between elements */
+    margin: 20px 0;
+}
+
+/* Form Header */
+h1 {
+    font-size: 2.5rem;
+    color: #354F52; /* Light title color */
+    margin-bottom: 2rem; /* Spacing below the title */
+    text-transform: uppercase;
+    font-family: "proxima nova", sans-serif;
+    text-align: center;
+}
+
+/* Labels */
+label {
+    color: #CAD2C5;
+    font-size: 2rem; /* Larger, readable labels */
+    text-transform: uppercase; /* Keep labels professional */
+    font-family: 'proxima nova', sans-serif;
+    text-align: left;
+    margin-bottom: 0.5rem; /* Space below label */
+}
+
+/* Inputs */
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="time"],
+textarea,
+select {
+    width: 100%; /* Full-width inputs */
+    padding: 0.8rem 1rem; /* Balanced padding for inputs */
+    border: 2px solid #354F52; /* Dark border */
+    border-radius: 5px;
+    font-size: 1.2rem; /* Good input size for readability */
+    outline: none;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Input Focus */
+input:focus,
+textarea:focus,
+select:focus {
+    border-color: #52796F; /* Slightly brighter focus color */
+    box-shadow: 0 0 5px rgba(82, 121, 111, 0.5);
+}
+
+.home-button {
+    position: absolute; /* Place it outside the main flow */
+    top: 20px; /* Adjust position from the top */
+    left: 20px; /* Adjust position from the left */
+    padding: 10px 15px;
+    background-color: #52796F; /* Dark button color */
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 2rem;
+    text-transform: uppercase;
+    transition: all 0.3s ease-in-out;
+}
+
+.home-button:hover {
+    background-color: #354F52; /* Slightly lighter hover color */
+    transform: translateY(-2px);
+}
+
+button {
+    padding: 0.7rem;
+    border: none;
+    background-color: #52796F; /* Dark button color */
+    color: white;
+    font-size: 1.4rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    text-transform: uppercase;
+    font-family: "proxima nova", sans-serif;
+}

@@ -385,8 +385,8 @@ app.get('/editEvent/:eventid',  async (req, res) => {
     const { eventid } = req.params;
 
     try {
-        const events = await knex('events').where({ eventid }).first();
-        if (!events) {
+        const event = await knex('eventrequests').where({ eventid }).first();
+        if (!event) {
             return res.status(404).send('Event not found');
         }
         res.render('editEvent', { event });
@@ -410,7 +410,7 @@ app.post('/editEvent/:eventid', async (req, res) => {
     } = req.body;
 
     try {
-        await knex('events')
+        await knex('eventrequests')
             .where({ eventid })
             .update({
                 eventname,
