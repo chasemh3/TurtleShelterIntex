@@ -145,7 +145,7 @@ app.get("/userMaintain", async (req, res) => {
     try {
         // Fetch users from the database
         const user = await knex("admin").select("adminid", "adminfirstname", "adminlastname");
-        res.render("userMaintain", { user });
+        res.render("userMaintain", { users });
     } catch (err) {
         res.status(500).send(err.message); // Handle any database errors
     }
