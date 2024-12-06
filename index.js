@@ -270,6 +270,24 @@ app.get('/eventRequest', (req,res) => {
 // edit event
 
 // delete event
+app.post("/deleteEvent", async (req, res) => {
+    // Check if the user is logged in
+    if (!req.session.user) {
+        return res.redirect("/login"); // Redirect to login if not authenticated
+    }
+
+    const { eventid } = req.body; // Assuming eventid is passed in the body
+
+    try {
+        // Deleting the event from the events table by eventid
+        await knex("eventrequests").where("eventid", eventid).del();
+
+        // Redirect to the events page or any other page after the delete
+        res.redirect("/eventMaintain");
+    } catch (err) {
+        res.status(500).send(err.message); // Error handling
+    }
+});
 
 // change event status
 
