@@ -527,7 +527,7 @@ app.get('/completedEvents', async (req, res) => {
     }
 
     try {
-        const events = await knex('completedEvents').select('*');
+        const events = await knex('completedevents').select('*');
         res.render('completedEvents', { events });
     } catch (error) {
         console.error('Error fetching completed events:', error.message);

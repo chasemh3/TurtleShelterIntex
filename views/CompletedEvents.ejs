@@ -25,20 +25,20 @@
         <tbody>
             <% completedEvents.forEach(event => { %>
             <tr>
-                <td><%= event.completedEventName %></td>
-                <td><%= event.numAttended %></td>
+                <td><%= event.completedeventname %></td>
+                <td><%= event.numattended %></td>
                 <td><%= event.duration %></td>
-                <td><%= event.numPocketsProduced %></td>
-                <td><%= event.numCollarsProduced %></td>
-                <td><%= event.numVestsProduced %></td>
-                <td><%= event.totalCompletedProducts %></td>
-                <td><%= event.eventStatus %></td>
+                <td><%= event.numpocketsproduced %></td>
+                <td><%= event.numcollarsproduced %></td>
+                <td><%= event.numvestsproduced %></td>
+                <td><%= event.totalcompletedproducts %></td>
+                <td><%= event.eventstatus %></td>
             </tr>
             <% }); %>
         </tbody>
     </table>
     <br>
-    <form action="/completedEventMaintenance" method="GET">
+    <form action="/completedEvents" method="GET">
         <button type="submit">Back to Completed Event Maintenance</button>
     </form>
 </body>
