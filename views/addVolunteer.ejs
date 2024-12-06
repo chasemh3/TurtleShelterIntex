@@ -5,28 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Volunteer Form</title>
     <link rel="stylesheet" href="/css/addVolunteer.css">
-    <link rel="stylesheet" href="/css/header.css">
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
     <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
 </head>
 <body>
-    <header class="hero">
-        <nav>
-            <div class="logo-container">
-                <img src="/images/logo.png" alt="Logo" class="logo">
-                <span class="company-name">TURTLE SHELTER <br>PROJECT</span>
-            </div> 
-            <ul>
-                <li><a href="/internalIndex">DASHBOARD</a></li>
-                <li><a href="/volunteerMaintain">VOLUNTEERS</a></li>
-                <li><a href="/eventMaintain">EVENTS</a></li>
-                <li><a href="/userMaintain">USERS</a></li>
-                <li><a href="/logout">LOGOUT</a></li>
-            </ul>
-        </nav>
-    </header>
+    <a href="/volunteerMaintain" class="home-button">Back</a>
     <main>
-        <h1 class="vol-head" style="text-align: center;">Volunteer Form</h1>
+        <h1 class="vol-head" style="text-align: center;">Add Volunteer</h1>
         <form action="/addVolunteer" method="POST">
             <label for="firstName">First Name</label>
             <input type="text" id="firstName" name="firstName" required>
