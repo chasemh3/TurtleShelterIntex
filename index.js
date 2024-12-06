@@ -522,20 +522,39 @@ app.post('/addEvent',  async (req, res) => {
 });
 
 // Completed Events (Protected)
-app.get('/CompletedEvents', async (req, res) => {
+app.get("/completedEvents", async (req, res) => {
     if (!req.session.user) {
-        return res.redirect("login"); // Redirect to login if not authenticated
+        return res.redirect("/login"); // Redirect to login if not authenticated
     }
-
     try {
-        const events = await knex('completedevents').select('*');
-        res.render('CompletedEvents', { completedEvents });
-    } catch (error) {
-        console.error('Error fetching completed events:', error.message);
-        res.status(500).send('Server Error');
+        const completedevents = await knex("completedevents").select(
+            "completedeventname",
+            "numattended",
+            "duration",
+            "numpocketsproduced",
+            "numcollarsproduced",
+            "numvestsproduced",
+            "totalcompletedproducts",
+            "eventstatus"
+        );
+
+        completedevents.forEach(event => {
+            // Ensure duration exists and is a string
+            if (event.duration && typeof event.duration === 'string') {
+                // Split the duration string (HH:mm:ss)
+                const [hours, minutes, seconds] = event.duration.split(":");
+                event.durationFormatted = `${hours} hours, ${minutes} minutes`;
+            } else {
+                event.durationFormatted = "N/A"; // If duration is missing or invalid
+            }
+        });
+
+        res.render("CompletedEvents", { completedevents });
+    } catch (err) {
+        console.error("Error fetching completed events:", err);
+        res.status(500).send("Error fetching completed events: " + err.message);
     }
 });
-
 // our tech page
 app.get('/ourtech', (req, res) => {
     res.render('ourtech', { pageTitle: 'Our Tech' });
