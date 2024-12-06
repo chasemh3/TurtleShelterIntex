@@ -41,7 +41,51 @@ nav {
     z-index: 1000;
     box-sizing: border-box; /* Ensure padding doesn't affect layout width */
 }
+/* Dropdown styles */
+.dropdown-menu {
+    display: none;
+    position: absolute; /* Position the menu relative to its parent */
+    background-color: #354F52; /* Matches your color scheme */
+    top: calc(100% + 2px); /* Ensures it's just below the bottom edge of the navbar */
+    left: 0; /* Aligns the dropdown menu with the left edge of the parent */
+    padding: 5px 0; /* Reduces vertical padding */
+    border-radius: 5px; /* Optional rounded corners */
+    min-width: 220px; /* Ensures a consistent width */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional shadow for better visibility */
+    z-index: 1000; /* Keeps it above other elements */
+}
 
+.dropdown {
+    position: relative; /* Key to keep the dropdown aligned with the parent */
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+/* Individual dropdown items */
+.dropdown-menu li {
+    padding: 5px 0px;
+}
+
+.dropdown-menu a {
+    display: block; /* Makes each item take up the full width */
+    text-align: left; /* Ensures text is aligned to the left */
+    padding: 10px 15px; /* Adjusts space around the text */
+    color: white; /* Text color for menu items */
+    text-decoration: none; /* Removes underline */
+    transition: background-color 0.3s ease; /* Smooth hover effect */
+    text-transform: uppercase;
+}
+
+.dropdown-menu a:hover {
+    background-color: #52796F;
+    color: #CAD2C5;
+}
+
+.dropdown-menu.show {
+    display: block;
+}
 .logo img {
     height: 100px; /* Adjust the size of the logo as needed */
     max-width: 100%;
