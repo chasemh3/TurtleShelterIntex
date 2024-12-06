@@ -1,0 +1,183 @@
+/* General Reset */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #CAD2C5, #52796F); /* Full page gradient */
+    color: #2F3E46; /* Darkest text color */
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    align-items: center; /* Center elements horizontally */
+    justify-content: flex-start; /* Start from the top */
+    min-height: 100vh; /* Ensure background covers full page height */
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+/* Hero Section for the header */
+.hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #52796F;
+    padding: 20px;
+    width: 100%;
+    color: white;
+    text-align: center;
+    position: relative;
+}
+
+/* Navigation Styling */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 30px;
+    background-color: rgba(0, 0, 0, 0.7);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #00a99d;
+}
+
+/* Form Container */
+main {
+    width: 40%; /* Keep form width as is */
+    margin: 100px auto; /* Adjust top margin for spacing from header */
+    padding: 2rem;
+    background-color: #F9F9F9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    min-height: 85vh; /* Increased form height */
+    overflow: visible; /* Prevent form from scrolling */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Space out the content evenly */
+}
+
+/* Form Title */
+h1 {
+    font-size: 2.5rem;
+    color: #2F3E46;
+    margin-bottom: 2rem;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: "proxima nova", sans-serif;
+}
+
+/* Labels and Inputs */
+label {
+    margin-bottom: 0.5rem;
+    color: #000; /* Change labels to black */
+    font-size: 1.5rem; /* Slightly smaller than before */
+    text-transform: uppercase;
+    font-family: 'proxima nova', sans-serif;
+    text-align: left;
+    display: block;
+}
+
+/* Inputs */
+input[type="text"],
+input[type="number"],
+input[type="radio"] {
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 2px solid #354F52; /* Dark border */
+    border-radius: 5px;
+    font-size: 1.4rem;
+    outline: none;
+    transition: all 0.3s ease-in-out;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus {
+    border-color: #52796F; /* Slightly brighter focus color */
+    box-shadow: 0 0 5px rgba(82, 121, 111, 0.5);
+}
+
+/* Sewing Level (Sewing Level heading) */
+.radio-group label:first-child {
+    font-size: 1.5rem; /* Match font size with other field labels */
+    font-weight: normal; /* Make the 'Sewing Level' label regular weight */
+    color: #000; /* Ensure the 'Sewing Level' label is black */
+}
+
+/* Radio buttons styling */
+.radio-group {
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column; /* Stack the radio buttons vertically */
+    align-items: flex-start; /* Align radio buttons and labels to the left */
+}
+
+.sewing-levels {
+    display: flex;
+    flex-direction: column; /* Stack each button and label pair vertically */
+    gap: 15px;
+}
+
+.radio-option {
+    display: flex; /* Align button and label horizontally */
+    align-items: center; /* Center the items vertically */
+    gap: 10px; /* Space between button and label */
+}
+
+/* Radio buttons */
+input[type="radio"] {
+    margin-bottom: 0.5rem; /* Space between button and label */
+}
+
+/* Button Styling */
+button {
+    padding: 0.7rem;
+    border: none;
+    background-color: #52796F; /* Dark button color */
+    color: white;
+    font-size: 1.4rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    text-transform: uppercase;
+    font-family: "proxima nova", sans-serif;
+    width: 100%;
+    margin-top: 1rem; /* Ensure space above the button */
+}
+
+button:hover {
+    background-color: #354F52; /* Slightly lighter hover color */
+    transform: translateY(-2px);
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+    main {
+        width: 90%;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    input[type="text"],
+    input[type="number"] {
+        font-size: 1.2rem;
+    }
+}
