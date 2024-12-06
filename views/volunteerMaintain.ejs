@@ -1,23 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/maintain.css">
+</head>
 <body>
-    <header>
+    <header class=“hero”>
         <nav>
             <div class=“logo-container”>
-                <img src="/images/logo.png" alt=“Logo” class=“logo”>
+                <img src="images/" alt="Logo" class="logo">
                 <span class=“company-name”>TURTLE SHELTER <br>PROJECT</span>
             </div>
-            <ul>
-                <li><a href=“/”>HOME</a></li>
-                <li><a href=“/volunteerForm”>VOLUNTEER</a></li>
-                <li><a href=“/eventRequest”>EVENT REQUEST</a></li>
-                <li><a href=“https://turtleshelterproject.org/donate”>DONATE</a></li>
-                <li><a href=“/login”>LOGIN</a></li>
+             <ul>
+                <li><a href="/internalIndex">HOME</a></li>
+                <li><a href="/userMaintain">USERS</a></li>
+                <li><a href="/volunteerMaintain">VOLUNTEERS</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">EVENTS</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/eventMaintain">Manage Events</a></li>
+                        <li><a href="/completedEvents">Completed Events</a></li>
+                    </ul>
+                </li>
+                <li><a href="/logout">LOGOUT</a></li>
             </ul>
         </nav>
     </header>
-    <h1>Volunteer Maintenance</h1>
-<div class="table-container">
-    <link rel="stylesheet" href="/css/maintain.css">
-
+    <h1>Volunteers List</h1>
     <table>
         <thead>
             <tr>
@@ -33,7 +43,6 @@
         </thead>
         <tbody>
             <% volunteers.forEach(volunteer => { %>
-            <!-- Sample row with data -->
             <tr>
                 <td><%= volunteer.volid %></td>
                 <td><%= volunteer.volfirstname %></td>
@@ -43,29 +52,20 @@
                 <td><%= volunteer.sewinglevel %></td>
                 <td><%= volunteer.numhoursvolunteering %></td>
                 <td>
-                    <button class="edit-btn">Edit</button>
-                    <button class="delete-btn">Delete</button>
-                </td>
-            </tr>
-
-            <tr>
-                <td>Jane</td>
-                <td>Smith</td>
-                <td>987-654-3210</td>
-                <td>jane.smith@example.com</td>
-                <td>Friend</td>
-                <td>Experienced</td>
-                <td>15</td>
-                <td>
-                    <button class="edit-btn">Edit</button>
-                    <button class="delete-btn">Delete</button>
+                    <a href="/editVolunteer/<%= volunteer.volid %>">
+                        <button class="edit-btn">Edit</button>
+                    </a>
+                    <form action="/delete/<%= volunteer.volid %>" method="POST" style="display:inline;">
+                        <button class="delete-btn" type="submit">Delete</button>
+                    </form>
                 </td>
             </tr>
             <% }) %>
+            <a href="/addVolunteer">
+                <button class="add-btn">Add</button>
+            </a>
         </tbody>
     </table>
-    <div class="table-footer">
-        <button class="add-btn">Add New Record</button>
-    </div>
-</div>
 </body>
+</html>
+
