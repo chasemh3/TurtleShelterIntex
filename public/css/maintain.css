@@ -185,3 +185,21 @@ h1 {
     text-transform: uppercase;
 }
 
+.home-button {
+    position: absolute; /* Place it outside the main flow */
+    top: 20px; /* Adjust position from the top */
+    left: 20px; /* Adjust position from the left */
+    padding: 10px 15px;
+    background-color: #52796F; /* Dark button color */
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 2rem;
+    text-transform: uppercase;
+    transition: all 0.3s ease-in-out;
+}
+
+.home-button:hover {
+    background-color: #354F52; /* Slightly lighter hover color */
+    transform: translateY(-2px);
+}

@@ -8,62 +8,62 @@
     <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
 </head>
 <body>
-<header class=“hero”>
+    <a href="/eventMaintain" class="home-button">Back</a>
     <h1>Edit Event</h1>
-    <form action="/editEvent/<%= event.eventID %>" method="POST">
+    <form action="/editEvent/<%= event.eventid %>" method="POST">
         <label for="eventName">Event Name:</label>
-        <input type="text" id="eventName" name="eventName" value="<%= event.eventName %>" required>
+        <input type="text" id="eventName" name="eventName" value="<%= event.eventname %>" required>
         <br>
 
         <label for="eventDate">Event Date:</label>
-        <input type="date" id="eventDate" name="eventDate" value="<%= event.eventDate %>" required>
+        <input type="date" id="eventDate" name="eventDate" value="<%= event.eventdate %>" required>
         <br>
 
         <label for="eventTime">Event Start Time:</label>
-        <input type="time" id="eventTime" name="eventTime" value="<%= event.eventTime %>" required>
+        <input type="time" id="eventTime" name="eventTime" value="<%= event.eventtime %>" required>
         <br>
 
         <label for="eventLocation">Event Location:</label>
-        <input type="text" id="eventLocation" name="eventLocation" value="<%= event.eventLocation %>" required>
+        <input type="text" id="eventLocation" name="eventLocation" value="<%= event.eventlocation %>" required>
         <br>
 
         <label for="numAttendees">Number of Attendees:</label>
-        <input type="number" id="numAttendees" name="numAttendees" value="<%= event.numAttendees %>" min="1" required>
+        <input type="number" id="numAttendees" name="numAttendees" value="<%= event.numattendees %>" min="1" required>
         <br>
 
         <label for="jenStory">Would you like a story from Jen?</label>
         <select id="jenStory" name="jenStory" required>
-            <option value="" <% if (!event.jenStory) { %> selected <% } %>>Select an option</option>
-            <option value="yes" <% if (event.jenStory === 'yes') { %> selected <% } %>>Yes</option>
-            <option value="no" <% if (event.jenStory === 'no') { %> selected <% } %>>No</option>
+            <option value="" <% if (!event.jenstory) { %> selected <% } %>>Select an option</option>
+            <option value="yes" <% if (event.jenstory === 'yes') { %> selected <% } %>>Yes</option>
+            <option value="no" <% if (event.jenstory === 'no') { %> selected <% } %>>No</option>
         </select>
         <br>
 
         <!-- Conditional inputs for Jen's story -->
-        <div id="jenStoryDetails" style="display: <%= event.jenStory === 'yes' ? 'block' : 'none' %>;">
+        <div id="jenStoryDetails" style="display: <%= event.jenstory === 'yes' ? 'block' : 'none' %>;">
             <label for="storyLength">Preferred Story Length:</label>
             <select id="storyLength" name="storyLength">
-                <option value="" <% if (!event.storyLength) { %> selected <% } %>>Select an option</option>
-                <option value="short" <% if (event.storyLength === 'short') { %> selected <% } %>>Short</option>
-                <option value="long" <% if (event.storyLength === 'long') { %> selected <% } %>>Long</option>
+                <option value="" <% if (!event.storylength) { %> selected <% } %>>Select an option</option>
+                <option value="short" <% if (event.storylength === 'short') { %> selected <% } %>>Short</option>
+                <option value="long" <% if (event.storylength === 'long') { %> selected <% } %>>Long</option>
             </select>
             <br>
         </div>
 
         <label for="numUnder10">Number of Attendees Under 10 Years Old:</label>
-        <input type="number" id="numUnder10" name="numUnder10" value="<%= event.numUnder10 %>" min="0">
+        <input type="number" id="numUnder10" name="numunder10" value="<%= event.numunder10 %>" min="0">
         <br>
 
         <label for="numSewers">Number of Sewers:</label>
-        <input type="number" id="numSewers" name="numSewers" value="<%= event.numSewers %>" min="0">
+        <input type="number" id="numSewers" name="numSewers" value="<%= event.numsewers %>" min="0">
         <br>
 
         <label for="numMachines">Number of Sewing Machines Host Can Provide:</label>
-        <input type="number" id="numMachines" name="numMachines" value="<%= event.numMachines %>" min="0">
+        <input type="number" id="numMachines" name="numMachines" value="<%= event.nummachines %>" min="0">
         <br>
 
         <label for="locationDescription">Location Description:</label>
-        <textarea id="locationDescription" name="locationDescription" rows="4" cols="50"><%= event.locationDescription %></textarea>
+        <textarea id="locationDescription" name="locationDescription" rows="4" cols="50"><%= event.locationdescription %></textarea>
         <br>
 
         <button type="submit">Submit</button>
@@ -74,8 +74,8 @@
 
     <script>
         // Show/Hide story length input based on Jen's story response
-        const jenStory = document.getElementById('jenStory');
-        const jenStoryDetails = document.getElementById('jenStoryDetails');
+        const jenStory = document.getElementById('jenstory');
+        const jenStoryDetails = document.getElementById('jenstorydetails');
 
         jenStory.addEventListener('change', function () {
             if (jenStory.value === 'yes') {
