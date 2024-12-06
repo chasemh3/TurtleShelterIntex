@@ -13,7 +13,6 @@ body {
     box-sizing: border-box; /* Ensures padding/margin don’t affect dimensions */
 
     min-height: 100vh; /* Set the body's minimum height to 100% of the viewport height */
-    background: linear-gradient(135deg, grey, #84A98C); /* Gradient background */
     background-size: cover; /* Ensures the gradient covers the entire area */
     background-repeat: no-repeat; /* Prevents the gradient from repeating */
 }
@@ -21,9 +20,13 @@ body {
 /* Ensure header stays in place */
 header {
     width: 100%;
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+    background-color: #354F52;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
 }
 nav {
     display: flex;
@@ -36,11 +39,59 @@ nav {
     top: 0;
     width: 100%;
     z-index: 1000;
-    box-sizing: border-box; /* Ensure padding doesn’t affect layout width */
+    box-sizing: border-box; /* Ensure padding doesn't affect layout width */
 }
+
 .logo img {
     height: 100px; /* Adjust the size of the logo as needed */
     max-width: 100%;
+}
+
+.logo-container {
+    display: flex; /* Aligns items in a row */
+    align-items: center; /* Vertically centers the logo and company name */
+    gap: 10px; /* Adjust the spacing between the logo and the text */
+    height: 100px;
+}
+
+/* Company name styling */
+.company-name {
+    font-family: 'proxima-nova', sans-serif; /* Match the font style to the site theme */
+    font-size: 25px; /* Adjust the font size as needed */
+    text-align: left;
+    display: block;
+    color: white; /* Match the text color to the nav theme */
+}
+
+
+.logo {
+    height: 100px;
+    max-width: 100%;
+    margin-left: 0; /* Default margin for the logo */
+}
+
+nav ul {
+    font-family: 'proxima-nova', sans-serif;
+    font-size: 25px;
+    display: flex;
+    gap: 40px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li:last-child {
+    margin-right: 0; /* Extra margin for the last item if needed */
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #84A98C;
 }
 /* Styling for table header */
 th {
@@ -51,60 +102,7 @@ th {
     border-bottom: 2px solid #ddd;
     white-space: nowrap; /* Prevent header text from wrapping unnecessarily */
 }
-.logo-container {
-    display: flex; /* Aligns items in a row */
-    align-items: center; /* Vertically centers the logo and company name */
-    gap: 10px; /* Adjust the spacing between the logo and the text */
-    height: 100px;
-}
-/* Company name styling */
-.company-name {
-    font-family: ‘proxima-nova’, sans-serif; /* Match the font style to the site theme */
-    font-size: 25px; /* Adjust the font size as needed */
-    text-align: left;
-    display: block;
-    color: white; /* Match the text color to the nav theme */
-}
-.logo {
-    height: 100px;
-    max-width: 100%;
-    margin-left: 0; /* Default margin for the logo */
-}
 
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 5px 30px;
-    background-color: #354F52;
-    opacity: 0.85;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
-    box-sizing: border-box;
-}
-
-nav ul {
-    font-family: ‘proxima-nova’, sans-serif;
-    font-size: 18px;
-    display: flex;
-    gap: 20px;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-nav ul li:last-child {
-    margin-right: 0; /* Extra margin for the last item if needed */
-}
-nav a {
-    text-decoration: none;
-    color: white;
-    transition: color 0.3s;
-}
-nav a:hover {
-    color: #84A98C;
-}
 
 /* Styling for the table container */
 .table-container {
@@ -230,4 +228,11 @@ td {
     table, th, td {
         font-size: 10px; /* Further reduce font size if space is constrained */
     }
+}
+
+h1 {
+    font-family: "proxima nova", sans-serif;
+    font-size: 3.5rem;
+    padding: 30px 0px;
+    text-transform: uppercase;
 }
