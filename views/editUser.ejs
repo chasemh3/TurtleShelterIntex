@@ -4,34 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit User</title>
-    <link rel="stylesheet" href="/css/login.css">
-    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="styles/login.css">
+    <link rel="stylesheet" href="styles/header.css">
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
     <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
 </head>
 <body>
-    <header class=“hero”>
-        <nav>
-            <div class=“logo-container”>
-                <img src="images/logo.png" alt="Logo" class="logo">
-                <span class=“company-name”><br>TURTLE SHELTER <br>PROJECT</span>
-            </div>
-             <ul>
-                <li><a href="/internalIndex">HOME</a></li>
-                <li><a href="/userMaintain">USERS</a></li>
-                <li><a href="/volunteerMaintain">VOLUNTEERS</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle">EVENTS</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="/eventMaintain">Manage Events</a></li>
-                        <li><a href="/completedEvents">Completed Events</a></li>
-                        <li><a href="/FAQ">FAQ</a></li>
-                    </ul>
-                </li>
-                <li><a href="/logout">LOGOUT</a></li>
-            </ul>
-        </nav>
-    </header>
+      <!-- Home Button -->
+  <a href="/" class="home-button">Home</a>
+
     <h1>Edit User</h1>
     <form action="/editUser/<%= user.adminid %>" method="POST">
         <label for="adminfirstname">First Name:</label>
