@@ -44,7 +44,12 @@
 
         <div>
             <label for="sewing_level">Sewing Level:</label>
-            <input type="text" id="sewing_level" name="sewing_level" value="<%= volunteer.sewing_level %>" required>
+            <select id="sewing_level" name="sewing_level" required>
+                <option value="">Select a level</option>
+                <option value="beginner" <%= volunteer.sewing_level === "beginner" ? "selected" : "" %>>Beginner</option>
+                <option value="intermediate" <%= volunteer.sewing_level === "intermediate" ? "selected" : "" %>>Intermediate</option>
+                <option value="advanced" <%= volunteer.sewing_level === "advanced" ? "selected" : "" %>>Advanced</option>
+            </select>
         </div>
 
         <div>

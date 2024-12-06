@@ -1,0 +1,209 @@
+
+/* General body styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa; /* Light background color */
+    color: #333; /* Dark text for readability */
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 80px;
+    background: linear-gradient(135deg, grey, #84A98C);
+    box-sizing: border-box; /* Ensures padding/margin don’t affect dimensions */
+
+    min-height: 100vh; /* Set the body's minimum height to 100% of the viewport height */
+    background-size: cover; /* Ensures the gradient covers the entire area */
+    background-repeat: no-repeat; /* Prevents the gradient from repeating */
+}
+/* Home Button */
+.home-button {
+    position: absolute; /* Place it outside the main flow */
+    top: 20px; /* Adjust position from the top */
+    left: 20px; /* Adjust position from the left */
+    padding: 10px 15px;
+    background-color: #52796F; /* Dark button color */
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 2rem;
+    text-transform: uppercase;
+    transition: all 0.3s ease-in-out;
+}
+
+.home-button:hover {
+    background-color: #354F52; /* Slightly lighter hover color */
+    transform: translateY(-2px);
+}
+/* Ensure header stays in place */
+header {
+    width: 100%;
+    background-color: #354F52;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+}
+/* Styling for the table container */
+.table-container {
+    width: 100%; /* Use the full width of the page */
+    max-width: 90%; /* Prevent it from being too wide */
+    background-color: #fff; /* White background */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    border-radius: 10px; /* Rounded corners */
+    overflow-x: auto; /* Add horizontal scrolling if needed */
+    margin: 20px auto; /* Center on the page with some margin */
+    padding: 10px; /* Add inner spacing */
+    box-sizing: border-box;
+}
+
+/* Styling for the table */
+table {
+    width: 100%; /* Table stretches inside container */
+    border-collapse: collapse;
+    table-layout: auto; /* Flexible column sizes */
+    word-wrap: break-word; /* Wraps long words */
+}
+
+/* Styling for table cells and headers */
+th, td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd; /* Subtle border for each cell */
+}
+
+th {
+    background-color: #52796F; /* Header background */
+    color: white; /* Header text color */
+}
+
+td {
+    background-color: #f9f9f9; /* Light alternating row color */
+}
+
+/* Allow scrolling if table overflows */
+.table-container::-webkit-scrollbar {
+    height: 8px; /* Scrollbar height */
+}
+.table-container::-webkit-scrollbar-thumb {
+    background-color: #52796F; /* Scrollbar thumb color */
+    border-radius: 10px;
+}
+.table-container::-webkit-scrollbar-track {
+    background-color: #f1f1f1; /* Scrollbar track color */
+}
+
+/* Ensure responsiveness */
+@media (max-width: 600px) {
+    th, td {
+        font-size: 12px;
+        padding: 5px;
+    }
+}
+
+
+/* Ensure buttons and table cells stay responsive */
+.edit-btn, .delete-btn {
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    margin: 3px 5px;
+}
+/* Adjust button font size on small screens */
+@media (max-width: 600px) {
+    .edit-btn, .delete-btn {
+        font-size: 12px;
+    }
+}
+
+/* Edit button styling */
+.edit-btn {
+    background-color: #52796F; /* Green for edit */
+    color: white;
+}
+
+.edit-btn:hover {
+    background-color: #1f6f29; /* Darker green for hover */
+}
+
+/* Delete button styling */
+.delete-btn {
+    background-color: #AA4A44; /* Red for delete */
+    color: white;
+}
+
+.delete-btn:hover {
+    background-color: #c9302c; /* Darker red for hover */
+}
+
+/* Styling for the "Add" button */
+.add-btn {
+    background-color: #354F52; /* Button background color */
+    color: white; /* Button text color */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.add-btn:hover {
+    background-color: #354F52; /* Darker shade when hovering */
+}
+
+/* Styling for table footer */
+.table-footer {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.table-footer-button {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    margin-top: -70px;
+}
+/* Table Row Styling */
+tbody tr {
+    border-bottom: 1px solid #ddd; /* Adds a line between rows */
+}
+
+/* Table Cell Styling */
+td {
+    padding: 10px; /* Adds padding inside cells */
+    border-right: 1px solid #ddd; /* Adds a vertical line between columns */
+    text-align: left; /* Aligns cell text to the left */
+}
+/* Adjust font size if the table needs to fit */
+@media (max-width: 600px) {
+    table, th, td {
+        font-size: 12px; /* Reduce font size on small screens */
+    }
+}
+
+@media (max-width: 400px) {
+    table, th, td {
+        font-size: 10px; /* Further reduce font size if space is constrained */
+    }
+}
+
+h1 {
+    font-family: "proxima nova", sans-serif;
+    font-size: 3.5rem;
+    padding: 30px 0px;
+    text-transform: uppercase;
+}
+.vol {
+    font-family: "proxima nova", sans-serif;
+    font-size: 3.5rem;
+    padding: 30;
+    text-transform: uppercase;
+}
