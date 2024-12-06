@@ -4,9 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add User</title>
+    <link rel="stylesheet" href="/css/login.css">
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
 </head>
 <body>
+    <a href="/userMaintain" class="home-button">Back</a>
     <h1>Add User</h1>
+    <% if (error) { %>
+        <p><%= error %></p>
+    <% } %>
     <form action="/addUser" method="POST">
         <label for="adminfirstname">First Name:</label>
         <input type="text" id="adminfirstname" name="adminfirstname" required>
@@ -20,10 +27,10 @@
         <label for="password">Password:</label>
         <input type="password" id="password" name="password" required>
         <br>
+        <label for="confirmPassword">Re-enter Password:</label>
+        <input type="password" id="confirmPassword" name="confirmPassword" required>
+        <br>
         <button type="submit">Submit</button>
-    </form>
-    <form action="/userMaintain" method="GET">
-        <button type="submit">Back</button>
     </form>
 </body>
 </html>

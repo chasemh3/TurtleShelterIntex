@@ -156,12 +156,18 @@ app.get("/addUser", (req, res) => {
     if (!req.session.user) {
         return res.redirect("/login"); // Redirect to login if not authenticated
     }
-    res.render("addUser");
+    res.render("addUser", { error: null });
 });
 
 app.post("/addUser", async (req, res) => {
     const { adminfirstname, adminlastname, username, password } = req.body;
-    
+
+    // checking if passworrds match 
+    if (password !== confirmPassword) {
+        // Re-render the form with an error message
+        return res.render('addUser', { error: 'Passwords do not match. Please try again.' });
+    }
+
     // Hash the password
     const saltRounds = 10;
     bcrypt.hash(password, saltRounds, async (err, hashedPassword) => {

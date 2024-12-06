@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit User</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/login.css">
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
     <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
 </head>
 <body>
+    <a href="/userMaintain" class="home-button">Back</a>
     <h1>Edit User</h1>
     <form action="/editUser/<%= user.adminid %>" method="POST">
         <label for="adminfirstname">First Name:</label>
@@ -18,9 +19,6 @@
         <input type="text" id="adminlastname" name="adminlastname" value="<%= user.adminlastname %>" required>
         <br>
         <button type="submit">Submit</button>
-    </form>
-    <form action="/userMaintain" method="GET">
-        <button type="submit">Back</button>
     </form>
 </body>
 </html>
