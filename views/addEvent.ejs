@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Event</title>
-    <link rel="stylesheet" href="/css/login.css">
-    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="styles/login.css">
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
     <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
 </head>
@@ -17,20 +16,42 @@
         <input type="text" id="eventName" name="eventName" required>
         <br>
 
-        <label for="eventDate">Event Date:</label>
-        <input type="date" id="eventDate" name="eventDate" required>
+        <label for="eventContactLastName">Event Contact Last Name:</label>
+        <input type="text" id="eventContactLastName" name="eventContactLastName" required>
+        <br>
+
+        <label for="eventStatus">Event Status:</label>
+        <select id="eventStatus" name="eventStatus" required>
+            <option value="">Select Status</option>
+            <option value="Scheduled">Scheduled</option>
+            <option value="Completed">Completed</option>
+            <option value="Canceled">Canceled</option>
+        </select>
+        <br>
+
+        <label for="eventType">Event Type:</label>
+        <select id="eventType" name="eventType" required>
+            <option value="">Select Type</option>
+            <option value="Workshop">Sewing</option>
+            <option value="Seminar">Non-Sewing</option>
+            <option value="Community Event">Both</option>
+        </select>
+        <br>
+
+        <label for="eventMonth">Event Month:</label>
+        <select id="eventMonth" name="eventMonth" required></select>
+        <br>
+
+        <label for="eventDay">Event Day:</label>
+        <select id="eventDay" name="eventDay" required></select>
+        <br>
+
+        <label for="eventYear">Event Year:</label>
+        <select id="eventYear" name="eventYear" required></select>
         <br>
 
         <label for="eventTime">Event Start Time:</label>
         <input type="time" id="eventTime" name="eventTime" required>
-        <br>
-
-        <label for="eventLocation">Event Location:</label>
-        <input type="text" id="eventLocation" name="eventLocation" required>
-        <br>
-
-        <label for="numAttendees">Number of Attendees:</label>
-        <input type="number" id="numAttendees" name="numAttendees" min="1" required>
         <br>
 
         <label for="jenStory">Would you like a story from Jen?</label>
@@ -52,16 +73,12 @@
             <br>
         </div>
 
-        <label for="numUnder10">Number of Attendees Under 10 Years Old:</label>
-        <input type="number" id="numUnder10" name="numUnder10" min="0">
+        <label for="eventContactPhone">Event Contact Phone:</label>
+        <input type="tel" id="eventContactPhone" name="eventContactPhone">
         <br>
 
-        <label for="numSewers">Number of Sewers:</label>
-        <input type="number" id="numSewers" name="numSewers" min="0">
-        <br>
-
-        <label for="numMachines">Number of Sewing Machines Host Can Provide:</label>
-        <input type="number" id="numMachines" name="numMachines" min="0">
+        <label for="eventContactEmail">Event Contact Email:</label>
+        <input type="email" id="eventContactEmail" name="eventContactEmail">
         <br>
 
         <label for="locationDescription">Location Description:</label>
@@ -69,9 +86,6 @@
         <br>
 
         <button type="submit">Submit</button>
-    </form>
-    <form action="/eventMaintain" method="GET">
-        <button type="submit">Back</button>
     </form>
 
     <script>
@@ -86,6 +100,62 @@
                 jenStoryDetails.style.display = 'none';
             }
         });
+
+        // Populate Month Dropdown
+        const eventMonth = document.getElementById('eventMonth');
+        const months = [
+            "January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"
+        ];
+
+        months.forEach((month, index) => {
+            const option = document.createElement('option');
+            option.value = index + 1; // Months as numbers (1-12)
+            option.textContent = month;
+            eventMonth.appendChild(option);
+        });
+
+        // Populate Year Dropdown
+        const eventYear = document.getElementById('eventYear');
+        const currentYear = new Date().getFullYear();
+        const yearsRange = 10; // Number of years in the dropdown
+
+        for (let year = currentYear; year <= currentYear + yearsRange; year++) {
+            const option = document.createElement('option');
+            option.value = year;
+            option.textContent = year;
+            eventYear.appendChild(option);
+        }
+
+        // Populate Day Dropdown
+        const eventDay = document.getElementById('eventDay');
+
+        // Function to populate days based on the selected month and year
+        function populateDays() {
+            const selectedMonth = parseInt(eventMonth.value);
+            const selectedYear = parseInt(eventYear.value);
+
+            // Clear current options
+            eventDay.innerHTML = "";
+
+            // Determine the number of days in the selected month and year
+            const daysInMonth = new Date(selectedYear, selectedMonth, 0).getDate();
+
+            // Populate the days
+            for (let day = 1; day <= daysInMonth; day++) {
+                const option = document.createElement('option');
+                option.value = day;
+                option.textContent = day;
+                eventDay.appendChild(option);
+            }
+        }
+
+        // Update days when month or year changes
+        eventMonth.addEventListener('change', populateDays);
+        eventYear.addEventListener('change', populateDays);
+
+        // Initialize days dropdown
+        populateDays();
     </script>
 </body>
 </html>
