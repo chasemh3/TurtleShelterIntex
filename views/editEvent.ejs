@@ -10,66 +10,96 @@
 <body>
     <a href="/eventMaintain" class="home-button">Back</a>
     <h1>Edit Event</h1>
-    <form action="/editEvent/<%= event.eventid %>" method="POST">
-        <label for="eventName">Event Name:</label>
-        <input type="text" id="eventName" name="eventName" value="<%= event.eventname %>" required>
+    <form action="/updateEvent/<%= event.eventid %>" method="POST">
+        <label for="eventname">Event Name:</label>
+        <input type="text" id="eventname" name="eventname" value="<%= event.eventname %>" required>
         <br>
 
-        <label for="eventDate">Event Date:</label>
-        <input type="date" id="eventDate" name="eventDate" value="<%= event.eventdate %>" required>
+        <label for="eventcontactlastname">Contact Last Name:</label>
+        <input type="text" id="eventcontactlastname" name="eventcontactlastname" value="<%= event.eventcontactlastname %>" required>
         <br>
 
-        <label for="eventTime">Event Start Time:</label>
-        <input type="time" id="eventTime" name="eventTime" value="<%= event.eventtime %>" required>
+        <label for="eventstatus">Event Status:</label>
+        <input type="text" id="eventstatus" name="eventstatus" value="<%= event.eventstatus %>" required>
         <br>
 
-        <label for="eventLocation">Event Location:</label>
-        <input type="text" id="eventLocation" name="eventLocation" value="<%= event.eventlocation %>" required>
+        <label for="eventtype">Event Type:</label>
+        <input type="text" id="eventtype" name="eventtype" value="<%= event.eventtype %>" required>
         <br>
 
-        <label for="numAttendees">Number of Attendees:</label>
-        <input type="number" id="numAttendees" name="numAttendees" value="<%= event.numattendees %>" min="1" required>
+        <label for="eventyear">Event Year:</label>
+        <input type="number" id="eventyear" name="eventyear" value="<%= event.eventyear %>" required>
         <br>
 
-        <label for="jenStory">Would you like a story from Jen?</label>
-        <select id="jenStory" name="jenStory" required>
-            <option value="" <% if (!event.jenstory) { %> selected <% } %>>Select an option</option>
-            <option value="yes" <% if (event.jenstory === 'yes') { %> selected <% } %>>Yes</option>
-            <option value="no" <% if (event.jenstory === 'no') { %> selected <% } %>>No</option>
-        </select>
+        <label for="eventmonth">Event Month:</label>
+        <input type="number" id="eventmonth" name="eventmonth" value="<%= event.eventmonth %>" required>
         <br>
 
-        <!-- Conditional inputs for Jen's story -->
-        <div id="jenStoryDetails" style="display: <%= event.jenstory === 'yes' ? 'block' : 'none' %>;">
-            <label for="storyLength">Preferred Story Length:</label>
-            <select id="storyLength" name="storyLength">
-                <option value="" <% if (!event.storylength) { %> selected <% } %>>Select an option</option>
-                <option value="short" <% if (event.storylength === 'short') { %> selected <% } %>>Short</option>
-                <option value="long" <% if (event.storylength === 'long') { %> selected <% } %>>Long</option>
-            </select>
-            <br>
-        </div>
-
-        <label for="numUnder10">Number of Attendees Under 10 Years Old:</label>
-        <input type="number" id="numUnder10" name="numunder10" value="<%= event.numunder10 %>" min="0">
+        <label for="eventday">Event Day:</label>
+        <input type="number" id="eventday" name="eventday" value="<%= event.eventday %>" required>
         <br>
 
-        <label for="numSewers">Number of Sewers:</label>
-        <input type="number" id="numSewers" name="numSewers" value="<%= event.numsewers %>" min="0">
+        <label for="starttime">Start Time:</label>
+        <input type="time" id="starttime" name="starttime" value="<%= event.starttime %>" required>
         <br>
 
-        <label for="numMachines">Number of Sewing Machines Host Can Provide:</label>
-        <input type="number" id="numMachines" name="numMachines" value="<%= event.nummachines %>" min="0">
+        <label for="estimatedduration">Estimated Duration:</label>
+        <input type="text" id="estimatedduration" name="estimatedduration" value="<%= event.estimatedduration %>" required>
         <br>
 
-        <label for="locationDescription">Location Description:</label>
-        <textarea id="locationDescription" name="locationDescription" rows="4" cols="50"><%= event.locationdescription %></textarea>
+        <label for="eventcontactphone">Contact Phone:</label>
+        <input type="text" id="eventcontactphone" name="eventcontactphone" value="<%= event.eventcontactphone %>" required>
         <br>
 
-        <button type="submit">Submit</button>
-    </form>
-    <form action="/eventMaintain" method="GET">
-        <button type="submit">Back</button>
+        <label for="eventcontactemail">Contact Email:</label>
+        <input type="email" id="eventcontactemail" name="eventcontactemail" value="<%= event.eventcontactemail %>" required>
+        <br>
+
+        <label for="eventstreetaddress">Street Address:</label>
+        <input type="text" id="eventstreetaddress" name="eventstreetaddress" value="<%= event.eventstreetaddress %>" required>
+        <br>
+
+        <label for="eventcity">City:</label>
+        <input type="text" id="eventcity" name="eventcity" value="<%= event.eventcity %>" required>
+        <br>
+
+        <label for="eventstate">State:</label>
+        <input type="text" id="eventstate" name="eventstate" value="<%= event.eventstate %>" required>
+        <br>
+
+        <label for="eventzipcode">Zip Code:</label>
+        <input type="text" id="eventzipcode" name="eventzipcode" value="<%= event.eventzipcode %>" required>
+        <br>
+
+        <label for="numattending">Total Attending:</label>
+        <input type="number" id="numattending" name="numattending" value="<%= event.numattending %>" required>
+        <br>
+
+        <label for="jensharestory">Jen Sharing Story?</label>
+        <input type="text" id="jensharestory" name="jensharestory" value="<%= event.jensharestory %>" required>
+        <br>
+
+        <label for="storylength">Story Length:</label>
+        <input type="text" id="storylength" name="storylength" value="<%= event.storylength %>" required>
+        <br>
+
+        <label for="under10amount">Total Under Age 10:</label>
+        <input type="number" id="under10amount" name="under10amount" value="<%= event.under10amount %>" required>
+        <br>
+
+        <label for="numsewers">Total Sewers:</label>
+        <input type="number" id="numsewers" name="numsewers" value="<%= event.numsewers %>" required>
+        <br>
+
+        <label for="numhostsewingmachines">Total Sewing Machines:</label>
+        <input type="number" id="numhostsewingmachines" name="numhostsewingmachines" value="<%= event.numhostsewingmachines %>" required>
+        <br>
+
+        <label for="locationdescription">Location Description:</label>
+        <textarea id="locationdescription" name="locationdescription" required><%= event.locationdescription %></textarea>
+        <br>
+
+        <button type="submit">Update Event</button>
     </form>
 
     <script>

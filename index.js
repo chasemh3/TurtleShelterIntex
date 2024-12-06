@@ -377,79 +377,66 @@ app.post('/deleteVolunteer/:id',  async (req, res) => {
 });
 
 // Edit Event (Protected)
-app.get('/editEvent/:id',  async (req, res) => {
+app.get('/editEvent/:eventid',  async (req, res) => {
     if (!req.session.user) {
         return res.redirect("/login"); // Redirect to login if not authenticated
     }
 
-    const { id } = req.params;
+    const { eventid } = req.params;
+
     try {
-        const event = await knex('eventrequests').where('eventID', id).first();
-        if (event) {
-            res.render('editEvent', { event });
-        } else {
-            res.status(404).send('Event not found');
+        const events = await knex('events').where({ eventid }).first();
+        if (!events) {
+            return res.status(404).send('Event not found');
         }
+        res.render('editEvent', { event });
     } catch (error) {
-        console.error('Error fetching event for editing:', error.message);
+        console.error('Error fetching event:', error.message);
         res.status(500).send('Server Error');
     }
 });
 
-app.post('/editEvent/:id', async (req, res) => {
+app.post('/editEvent/:eventid', async (req, res) => {
     if (!req.session.user) {
         return res.redirect("/login"); // Redirect to login if not authenticated
     }
 
-    const { id } = req.params;
+    const { eventid } = req.params;
     const {
-        EventYear,
-        eventMonth,
-        eventDay,
-        eventStreetAddress,
-        eventName,
-        numAttending,
-        eventType,
-        eventState,
-        eventCity,
-        eventZipCode,
-        StartTime,
-        estimatedDuration,
-        eventContactLastName,
-        eventContactPhone,
-        JenShareStory,
-        eventStatus,
-        under10Amount,
-        NumSewers,
-        LocationDescription,
-        NumHostSewingMachines,
+        eventname, eventcontactlastname, eventstatus, eventtype, eventyear, eventmonth, eventday,
+        starttime, estimatedduration, eventcontactphone, eventcontactemail, eventstreetaddress,
+        eventcity, eventstate, eventzipcode, numattending, jensharestory, storylength,
+        under10amount, numsewers, numhostsewingmachines, locationdescription
     } = req.body;
+
     try {
-        await knex('eventrequests')
-            .where('eventID', id)
+        await knex('events')
+            .where({ eventid })
             .update({
-                EventYear,
-                eventMonth,
-                eventDay,
-                eventStreetAddress,
-                eventName,
-                numAttending,
-                eventType,
-                eventState,
-                eventCity,
-                eventZipCode,
-                StartTime,
-                estimatedDuration,
-                eventContactLastName,
-                eventContactPhone,
-                JenShareStory,
-                eventStatus,
-                under10Amount,
-                NumSewers,
-                LocationDescription,
-                NumHostSewingMachines,
+                eventname,
+                eventcontactlastname,
+                eventstatus,
+                eventtype,
+                eventyear,
+                eventmonth,
+                eventday,
+                starttime,
+                estimatedduration,
+                eventcontactphone,
+                eventcontactemail,
+                eventstreetaddress,
+                eventcity,
+                eventstate,
+                eventzipcode,
+                numattending,
+                jensharestory,
+                storylength,
+                under10amount,
+                numsewers,
+                numhostsewingmachines,
+                locationdescription,
             });
-        res.redirect('/eventMaintain');
+        res.redirect('/eventMaintain'); // Redirect to events list after update
     } catch (error) {
         console.error('Error updating event:', error.message);
         res.status(500).send('Server Error');
