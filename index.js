@@ -523,7 +523,7 @@ app.post('/addEvent',  async (req, res) => {
 });
 
 // Completed Events (Protected)
-app.get("/completedEvents", async (req, res) => {
+app.get("/CompletedEvents", async (req, res) => {
     if (!req.session.user) {
         return res.redirect("/login"); // Redirect to login if not authenticated
     }
